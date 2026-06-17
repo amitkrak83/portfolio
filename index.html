@@ -217,7 +217,7 @@ section { padding: 0 0 48px; }
 .about-quote {
   font-size: 28px; font-weight: 600; color: #0F0D0C; line-height: 1.3;
   border-left: 3px solid #E85D0C; padding-left: 20px;
-  margin-bottom: 28px; letter-spacing: -0.5px;
+  margin-bottom: 28px; margin-top: 0; letter-spacing: -0.5px;
 }
 .about-cols { display: flex; gap: 48px; align-items: flex-start; }
 .about-text { flex: 1; }
@@ -367,6 +367,58 @@ section { padding: 0 0 48px; }
 .w-strip-note { font-size: 11px; color: #8A8880; white-space: nowrap; margin-left: 20px; }
 
 /* ════════════════════════════════════════
+   CASE STUDY MODAL
+════════════════════════════════════════ */
+.cs-overlay {
+  display: none; position: fixed; inset: 0; z-index: 1000;
+  background: rgba(15,13,12,0.55); align-items: center; justify-content: center;
+  padding: 20px;
+}
+.cs-overlay.open { display: flex; }
+.cs-modal {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  display: flex; max-width: 780px; width: 100%; max-height: 90vh;
+  box-shadow: 0 24px 64px rgba(15,13,12,0.18);
+  position: relative;
+}
+.cs-side {
+  width: 220px; flex-shrink: 0; background: #F7F6F4;
+  padding: 28px 24px; border-right: 1px solid #E8E6E1;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.cs-tag { font-size: 10px; background: #FFF3EE; border: 1px solid #FDDCCC; color: #E85D0C; border-radius: 20px; padding: 3px 10px; display: inline-block; width: fit-content; }
+.cs-title { font-size: 17px; font-weight: 600; color: #0F0D0C; line-height: 1.35; letter-spacing: -0.3px; }
+.cs-metrics { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+.cs-metric .val { font-size: 22px; font-weight: 600; color: #E85D0C; line-height: 1.1; letter-spacing: -0.5px; }
+.cs-metric .lbl { font-size: 11px; color: #8A8880; margin-top: 2px; }
+.cs-stack-side { display: flex; flex-direction: column; gap: 5px; margin-top: auto; }
+.cs-stack-tag { font-size: 10px; color: #5A5856; background: #FFFFFF; border: 1px solid #E8E6E1; border-radius: 10px; padding: 3px 8px; width: fit-content; }
+.cs-body { flex: 1; padding: 28px; overflow-y: auto; }
+.cs-close { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+.cs-close-btn { background: none; border: none; cursor: pointer; color: #8A8880; font-size: 20px; line-height: 1; padding: 0; }
+.cs-close-btn:hover { color: #0F0D0C; }
+.cs-section-h { font-size: 10px; color: #E85D0C; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; margin-top: 22px; }
+.cs-section-h:first-of-type { margin-top: 0; }
+.cs-section-p { font-size: 14px; color: #3D3C3A; line-height: 1.75; }
+.cs-close-top {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(255,255,255,0.9); border: 1px solid #E8E6E1;
+  border-radius: 50%; width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 16px; color: #5A5856; z-index: 10;
+}
+.cs-close-top:hover { color: #0F0D0C; }
+
+@media (max-width: 768px) {
+  .cs-modal { flex-direction: column; max-height: 88vh; }
+  .cs-side { width: 100%; padding: 20px; border-right: none; border-bottom: 1px solid #E8E6E1; }
+  .cs-metrics { flex-direction: row; gap: 20px; }
+  .cs-stack-side { flex-direction: row; flex-wrap: wrap; margin-top: 8px; }
+  .cs-section-p { font-size: 15px; }
+  .cs-title { font-size: 18px; }
+}
+
+/* ════════════════════════════════════════
    CONTACT
 ════════════════════════════════════════ */
 #contact { padding: 0 0 48px; }
@@ -466,13 +518,33 @@ footer { background: #0F0D0C; border-top: 2px solid #E85D0C; padding: 36px 0 20p
   .hamburger { display: block; margin-left: 8px; margin-right: 0; }
   .btn-hdr {
     margin-left: auto;
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    padding: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    display: inline-flex; align-items: center;
+    white-space: nowrap;
   }
-  .btn-hdr::after { content: 'CV'; font-size: 11px; font-weight: 700; }
+  .btn-hdr::after { content: none; }
+
+  /* Global font bump */
+  body { font-size: 17px; }
+  .about-text p { font-size: 16px; font-weight: 450; }
+  .about-punch { font-size: 17px; }
+  .about-quote { font-size: 24px; }
+  .tl-pts li { font-size: 15px; font-weight: 450; }
+  .tl-role { font-size: 17px; }
+  .tl-co { font-size: 14px; }
+  .card-title { font-size: 18px; }
+  .card-desc { font-size: 15px; font-weight: 450; }
+  .card-metric { font-size: 13px; }
+  .w-ttl-lg { font-size: 17px; }
+  .w-ttl-sm { font-size: 15px; }
+  .w-excerpt { font-size: 15px; font-weight: 450; }
+  .rec-hook { font-size: 17px; }
+  .rec-body { font-size: 15px; font-weight: 450; }
+  .contact-body { font-size: 16px; font-weight: 450; }
+  .contact-h { font-size: 30px; }
 
   /* Hero */
   #hero { padding: 48px 0 44px; }
@@ -480,15 +552,23 @@ footer { background: #0F0D0C; border-top: 2px solid #E85D0C; padding: 36px 0 20p
   .hero-inner { flex-direction: column; gap: 36px; align-items: center; }
   .hero-text { max-width: 340px; margin: 0 auto; }
   .hero-ctas { padding-left: 0; }
-  .hero-chips { width: 100%; height: 240px; margin-top: 8px; }
+  .hero-chips { width: 300px; height: 300px; margin: 8px auto 0; }
 
   /* Cards — 1 col */
   .cards-grid { grid-template-columns: 1fr; }
 
-  /* About — photo top, text below */
+  /* About — stack on mobile */
   .about-row { flex-direction: column-reverse; align-items: center; gap: 28px; text-align: center; }
   .about-photo { width: 220px; height: 220px; }
   .about-photo img { width: 88px; height: 88px; }
+  .about-cols { flex-direction: column; gap: 28px; }
+  .about-right { align-items: center; width: 100%; order: -1; }
+  .about-quote { font-size: 22px; }
+  .about-domains { margin-top: 16px; }
+  .about-dtags { justify-content: center; }
+  .about-text { align-items: center; display: flex; flex-direction: column; }
+  .about-text p { text-align: left; align-self: stretch; }
+  .about-quote { align-self: stretch; }
   .stats-row { flex-wrap: wrap; }
   .stat { min-width: 50%; padding: 0 0 20px 0 !important; border-left: none !important; }
   .stat:nth-child(odd)  { padding-right: 12px !important; }
@@ -632,9 +712,9 @@ footer { background: #0F0D0C; border-top: 2px solid #E85D0C; padding: 36px 0 20p
       <span class="div-label">About</span>
       <div class="div-line"></div>
     </div>
-    <p class="about-quote">I don't simplify problems. I build systems complex enough to handle them.</p>
     <div class="about-cols">
       <div class="about-text">
+        <p class="about-quote">I don't simplify problems. I build systems complex enough to handle them.</p>
         <p>A Data Scientist who has spent years translating messy, expensive, time-consuming real-world problems into systems that handle themselves. The kind that reason, act, and adapt.</p>
         <p>I came up through ML → DL → CV → GenAI → Agentic AI. Not because it was trendy. Because the problems got more interesting. I'm still learning. Still building. Still obsessed with making hard things run fast.</p>
         <p class="about-punch">If it takes days, it shouldn't.</p>
@@ -686,13 +766,13 @@ footer { background: #0F0D0C; border-top: 2px solid #E85D0C; padding: 36px 0 20p
     </div>
     <div class="cards-grid">
 
-      <a class="proj-card proj-card--disabled">
+      <a class="proj-card" data-case="qa" style="cursor:pointer;">
         <p class="card-label">Case study</p>
         <p class="card-title">QA Automation Platform</p>
         <p class="card-metric">10× faster · &lt;4 min to first test · 99% coverage</p>
         <p class="card-desc">8-agent LangGraph system — NLP instruction to working test in under 4 minutes, deployed in production.</p>
         <p class="card-stack">LangGraph · LangChain · FastAPI · MySQL</p>
-        <span class="card-cta card-cta--soon">Case study coming soon</span>
+        <span class="card-cta">Read case study →</span>
       </a>
 
       <a class="proj-card proj-card--disabled">
@@ -1161,6 +1241,70 @@ footer { background: #0F0D0C; border-top: 2px solid #E85D0C; padding: 36px 0 20p
     requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
+})();
+</script>
+
+<!-- ══════════════════════════════════════
+     CASE STUDY MODAL
+══════════════════════════════════════ -->
+<div class="cs-overlay" id="cs-overlay">
+  <div class="cs-modal" id="cs-modal">
+  <button class="cs-close-btn cs-close-top" id="cs-close">✕</button>
+    <div class="cs-side">
+      <span class="cs-tag" id="cs-tag">Case study</span>
+      <p class="cs-title" id="cs-title">QA Automation Platform</p>
+      <div class="cs-metrics" id="cs-metrics">
+        <div class="cs-metric"><div class="val">10×</div><div class="lbl">faster testing</div></div>
+        <div class="cs-metric"><div class="val">&lt;4 min</div><div class="lbl">to first test</div></div>
+        <div class="cs-metric"><div class="val">99%</div><div class="lbl">coverage potential</div></div>
+      </div>
+      <div class="cs-stack-side" id="cs-stack">
+        <span class="cs-stack-tag">LangGraph</span>
+        <span class="cs-stack-tag">LangChain</span>
+        <span class="cs-stack-tag">FastAPI</span>
+        <span class="cs-stack-tag">FAISS</span>
+        <span class="cs-stack-tag">OpenAI</span>
+        <span class="cs-stack-tag">MySQL</span>
+        <span class="cs-stack-tag">Docker</span>
+        <span class="cs-stack-tag">Python</span>
+      </div>
+    </div>
+    <div class="cs-body">
+      <p class="cs-section-h">The problem</p>
+      <p class="cs-section-p" id="cs-problem">Writing test cases manually was slow, inconsistent, and bottlenecked every release cycle. Teams needed a way to go from a plain-language feature spec to working, executable tests — without human intervention at every step.</p>
+      <p class="cs-section-h">What I built</p>
+      <p class="cs-section-p" id="cs-built">An 8–11 agent LangGraph system where each agent owns a single responsibility: NLP-to-test-case conversion, test data generation, framework-aware code generation, and CI/CD integration. RAG pipelines using FAISS with OpenAI Embeddings and SentenceTransformers provide codebase-grounded context so generated tests are aware of the actual implementation — not just the spec.</p>
+      <p class="cs-section-h">The outcome</p>
+      <p class="cs-section-p" id="cs-outcome">Plain-language instruction to production-ready test in under 4 minutes. Testing cycles cut by 10×. Coverage potential above 99%. End-to-end lifecycle automated: natural language input → test case generation → execution → structured report output. Deployed and in active use.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var overlay = document.getElementById('cs-overlay');
+  var closeBtn = document.getElementById('cs-close');
+
+  document.querySelectorAll('.proj-card[data-case]').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      e.preventDefault();
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeModal();
+  });
 })();
 </script>
 
