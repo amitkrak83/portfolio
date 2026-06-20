@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Reference — Amit Kumar Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #F7F6F4;
+    color: #0F0D0C;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /*
+   * ── MOBILE INTERACTION RULE ─────────────────────────────────────────
+   * Desktop: orange on :hover (mouse)
+   * Mobile:  orange on :active (tap) — same elements, same effect
+   * Nothing is permanently orange just because it's mobile.
+   * ────────────────────────────────────────────────────────────────────
+   */
+  @media (max-width: 768px) {
+    /* Cards — tap feedback */
+    .proj-card:active { border-top-color: #E85D0C !important; }
+    .proj-card:active .card-cta { color: #E85D0C !important; }
+    .proj-card:active .card-label { color: #E85D0C !important; }
+
+    /* Writing cards — tap feedback */
+    .w-card:active { border-top-color: #E85D0C !important; }
+    .w-card:active .w-cta { color: #E85D0C !important; }
+
+    /* Skills rows — tap feedback */
+    .skill-row:active .skill-bar { background: #E85D0C !important; }
+    .skill-row:active .skill-cat { color: #E85D0C !important; }
+    .skill-row:active .stag-n { background: #FFF3EE !important; color: #E85D0C !important; border-color: #FDDCCC !important; }
+
+    /* Footer links — tap feedback */
+    .ft-link:active { color: #E85D0C !important; }
+  }
+
+  /* Doc layout */
+  .doc-header {
+    background: #0F0D0C;
+    padding: 40px 60px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .doc-header h1 { font-size: 22px; color: #FFFFFF; font-weight: 500; letter-spacing: -0.5px; }
+  .doc-header p { font-size: 12px; color: #5A5856; letter-spacing: 0.3px; margin-top: 4px; }
+  .doc-header .version { font-size: 11px; color: #E85D0C; letter-spacing: 1px; text-transform: uppercase; }
+
+  .doc-nav {
+    background: #FFFFFF;
+    border-bottom: 1px solid #ECEAE6;
+    padding: 0 60px;
+    display: flex;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .doc-nav a {
+    font-size: 12px;
+    color: #8A8880;
+    text-decoration: none;
+    padding: 14px 16px;
+    border-bottom: 2px solid transparent;
+    display: block;
+  }
+  .doc-nav a:hover { color: #0F0D0C; border-bottom-color: #E85D0C; }
+
+  .doc-body { padding: 0 60px 80px; }
+
+  .section {
+    padding: 56px 0 0;
+  }
+
+  .section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #E85D0C;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #0F0D0C;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+  .section-desc {
+    font-size: 13px;
+    color: #8A8880;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ECEAE6;
+  }
+
+  .preview-box {
+    background: #FFFFFF;
+    border: 1px solid #ECEAE6;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .preview-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #B0AEA8;
+    font-weight: 500;
+    padding: 10px 20px;
+    background: #F7F6F4;
+    border-bottom: 1px solid #ECEAE6;
+  }
+
+  .spec-row {
+    display: flex;
+    gap: 40px;
+    margin-top: 24px;
+  }
+
+  .spec-box {
+    background: #FFFFFF;
+    border: 1px solid #ECEAE6;
+    border-radius: 8px;
+    padding: 20px 24px;
+    flex: 1;
+  }
+  .spec-box h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #B0AEA8;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 11px;
+    background: #F5F3EF;
+    color: #E85D0C;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #B0AEA8; font-weight: 500; padding: 8px 12px; border-bottom: 1px solid #ECEAE6; }
+  td { padding: 10px 12px; border-bottom: 1px solid #F5F3EF; color: #6B6860; vertical-align: middle; }
+  td:first-child { color: #0F0D0C; font-weight: 500; }
+  tr:last-child td { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<!-- DOC HEADER -->
+<div class="doc-header">
+  <div>
+    <h1>Portfolio Design Reference</h1>
+    <p>Amit Kumar — amitkumar.dev · All confirmed design decisions</p>
+  </div>
+  <span class="version">June 2026</span>
+</div>
+
+<!-- DOC NAV -->
+<nav class="doc-nav">
+  <a href="#colors">Colors</a>
+  <a href="#typography">Typography</a>
+  <a href="#header">Header</a>
+  <a href="#hero">Hero</a>
+  <a href="#cards">Cards</a>
+  <a href="#buttons">Buttons</a>
+  <a href="#divider">Divider</a>
+  <a href="#footer">Footer</a>
+  <a href="#spacing">Spacing</a>
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#recommendations">Recommendations</a>
+  <a href="#writing">Writing</a>
+  <a href="#contact">Contact</a>
+  <a href="#mobile">Mobile</a>
+</nav>
+
+<div class="doc-body">
+
+  <!-- ── 1. COLORS ── -->
+  <div class="section" id="colors">
+    <p class="section-label">01</p>
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">White canvas, warm black text, orange for emphasis only. Orange appears on: CTA buttons, featured card border, active link underline, hero heading accent. Nowhere else.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px">
+      <!-- White -->
+      <div>
+        <div style="height:80px;background:#FFFFFF;border:1px solid #ECEAE6;border-radius:8px"></div>
+        <p style="font-size:12px;font-weight:500;margin-top:8px;color:#0F0D0C">Page background</p>
+        <code>#FFFFFF</code>
+      </div>
+      <!-- Warm black -->
+      <div>
+        <div style="height:80px;background:#0F0D0C;border-radius:8px"></div>
+        <p style="font-size:12px;font-weight:500;margin-top:8px;color:#0F0D0C">Primary text</p>
+        <code>#0F0D0C</code>
+      </div>
+      <!-- Orange -->
+      <div>
+        <div style="height:80px;background:#E85D0C;border-radius:8px"></div>
+        <p style="font-size:12px;font-weight:500;margin-top:8px;color:#0F0D0C">Accent — orange</p>
+        <code>#E85D0C</code>
+      </div>
+      <!-- Mid gray -->
+      <div>
+        <div style="height:80px;background:#6B6860;border-radius:8px"></div>
+        <p style="font-size:12px;font-weight:500;margin-top:8px;color:#0F0D0C">Body text</p>
+        <code>#6B6860</code>
+      </div>
+      <!-- Muted -->
+      <div>
+        <div style="height:80px;background:#8A8880;border-radius:8px"></div>
+        <p style="font-size:12px;font-weight:500;margin-top:8px;color:#0F0D0C">Nav / muted</p>
+        <code>#8A8880</code>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px">
+      <div>
+        <div style="height:60px;background:#9A9890;border-radius:8px"></div>
+        <p style="font-size:11px;font-weight:500;margin-top:6px;color:#0F0D0C">Card meta</p>
+        <code style="font-size:10px">#9A9890</code>
+      </div>
+      <div>
+        <div style="height:60px;background:#C0BEB8;border-radius:8px"></div>
+        <p style="font-size:11px;font-weight:500;margin-top:6px;color:#0F0D0C">Ghost / labels</p>
+        <code style="font-size:10px">#C0BEB8</code>
+      </div>
+      <div>
+        <div style="height:60px;background:#ECEAE6;border-radius:8px"></div>
+        <p style="font-size:11px;font-weight:500;margin-top:6px;color:#0F0D0C">Card border</p>
+        <code style="font-size:10px">#ECEAE6</code>
+      </div>
+      <div>
+        <div style="height:60px;background:#F0EFED;border-radius:8px"></div>
+        <p style="font-size:11px;font-weight:500;margin-top:6px;color:#0F0D0C">Divider lines</p>
+        <code style="font-size:10px">#F0EFED</code>
+      </div>
+      <div>
+        <div style="height:60px;background:#FAFAF8;border:1px solid #ECEAE6;border-radius:8px"></div>
+        <p style="font-size:11px;font-weight:500;margin-top:6px;color:#0F0D0C">Footer strip</p>
+        <code style="font-size:10px">#FAFAF8</code>
+      </div>
+    </div>
+
+    <!-- Scrolled state colors -->
+    <div style="margin-top:20px">
+      <p style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#B0AEA8;font-weight:500;margin-bottom:10px">Scrolled header state only</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+        <div>
+          <div style="height:50px;background:#0F0D0C;border-radius:8px"></div>
+          <p style="font-size:11px;font-weight:500;margin-top:6px;color:#0F0D0C">Header bg</p>
+          <code style="font-size:10px">#0F0D0C</code>
+        </div>
+        <div>
+          <div style="height:50px;background:#5A5856;border-radius:8px"></div>
+          <p style="font-size:11px;font-weight:500;margin-top:6px;color:#0F0D0C">Muted links</p>
+          <code style="font-size:10px">#5A5856</code>
+        </div>
+        <div>
+          <div style="height:50px;background:#7A7876;border-radius:8px"></div>
+          <p style="font-size:11px;font-weight:500;margin-top:6px;color:#0F0D0C">Tagline</p>
+          <code style="font-size:10px">#7A7876</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. TYPOGRAPHY ── -->
+  <div class="section" id="typography">
+    <p class="section-label">02</p>
+    <h2 class="section-title">Typography</h2>
+    <p class="section-desc">Font: <code>system-ui, -apple-system, sans-serif</code> — used throughout. No external font imports. Two weights only: 400 regular and 500 medium.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">Live type scale</div>
+      <div style="padding:32px 36px;display:flex;flex-direction:column;gap:20px;background:#FFFFFF">
+
+        <div style="display:flex;align-items:baseline;gap:24px;padding-bottom:20px;border-bottom:1px solid #F0EFED">
+          <div style="width:140px;flex-shrink:0">
+            <p style="font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;font-weight:500">Hero heading</p>
+            <p style="font-size:10px;color:#C0BEB8;margin-top:2px">54px / 500 / -2.5px</p>
+          </div>
+          <p style="font-size:54px;font-weight:500;letter-spacing:-2.5px;line-height:1.05;color:#0F0D0C">Building AI that <span style="color:#E85D0C">ships.</span></p>
+        </div>
+
+        <div style="display:flex;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #F0EFED">
+          <div style="width:140px;flex-shrink:0">
+            <p style="font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;font-weight:500">Section heading</p>
+            <p style="font-size:10px;color:#C0BEB8;margin-top:2px">32px / 500 / -1px</p>
+          </div>
+          <p style="font-size:32px;font-weight:500;letter-spacing:-1px;color:#0F0D0C">Selected work</p>
+        </div>
+
+        <div style="display:flex;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid #F0EFED">
+          <div style="width:140px;flex-shrink:0">
+            <p style="font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;font-weight:500">Body text</p>
+            <p style="font-size:10px;color:#C0BEB8;margin-top:2px">15px / 400 / 1.75lh</p>
+          </div>
+          <p style="font-size:15px;font-weight:400;line-height:1.75;color:#6B6860;max-width:480px"><span class="exp-years">4</span> years. Multi-agent systems. RAG. Computer vision. QA automation at 10× speed.</p>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:24px;padding-bottom:16px;border-bottom:1px solid #F0EFED">
+          <div style="width:140px;flex-shrink:0">
+            <p style="font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;font-weight:500">Sub-label</p>
+            <p style="font-size:10px;color:#C0BEB8;margin-top:2px">11px / 500 / 2.5px UC</p>
+          </div>
+          <p style="font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#C0BEB8">Gurugram · Open to opportunities</p>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:24px;padding-bottom:16px;border-bottom:1px solid #F0EFED">
+          <div style="width:140px;flex-shrink:0">
+            <p style="font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;font-weight:500">Nav links</p>
+            <p style="font-size:10px;color:#C0BEB8;margin-top:2px">12px / 400 / #8A8880</p>
+          </div>
+          <div style="display:flex;gap:24px;align-items:center">
+            <span style="font-size:12px;color:#8A8880">Work</span>
+            <span style="font-size:12px;color:#8A8880">Writing</span>
+            <span style="font-size:12px;color:#8A8880">About</span>
+            <span style="font-size:12px;color:#0F0D0C;font-weight:500;border-bottom:2px solid #E85D0C;padding-bottom:2px">Active page</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:24px;padding-bottom:16px;border-bottom:1px solid #F0EFED">
+          <div style="width:140px;flex-shrink:0">
+            <p style="font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;font-weight:500">Card label</p>
+            <p style="font-size:10px;color:#C0BEB8;margin-top:2px">10px / 500 / 1.5px UC</p>
+          </div>
+          <div style="display:flex;gap:24px">
+            <span style="font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#E85D0C">Case study (featured)</span>
+            <span style="font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#9A9890">Case study (default)</span>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:24px">
+          <div style="width:140px;flex-shrink:0">
+            <p style="font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;font-weight:500">Card title</p>
+            <p style="font-size:10px;color:#C0BEB8;margin-top:2px">14px / 500 / #0F0D0C</p>
+          </div>
+          <p style="font-size:14px;font-weight:500;color:#0F0D0C">QA Automation Platform</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. HEADER ── -->
+  <div class="section" id="header">
+    <p class="section-label">03</p>
+    <h2 class="section-title">Header — H9 Variant</h2>
+    <p class="section-desc">Two-line left block (name + tagline) · nav links right · orange pill CTA far right. Sticky on scroll. Background transitions from white → black over 300ms.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">Default — white background, no active page</div>
+      <div style="background:#FFFFFF;display:flex;align-items:center;padding:10px 28px;font-family:system-ui,sans-serif">
+        <div>
+          <p style="font-size:14px;color:#0F0D0C;font-weight:500;margin:0;line-height:1.2">Amit Kumar</p>
+          <p style="font-size:10px;color:#8A8880;margin:0;letter-spacing:0.3px">GenAI Engineer · Agentic AI</p>
+        </div>
+        <div style="display:flex;gap:22px;margin-left:auto;margin-right:22px;align-items:center">
+          <span style="font-size:12px;color:#8A8880">Work</span>
+          <span style="font-size:12px;color:#8A8880">Writing</span>
+          <span style="font-size:12px;color:#8A8880">About</span>
+        </div>
+        <span style="font-size:12px;color:#fff;background:#E85D0C;padding:6px 16px;border-radius:20px;font-weight:500">Contact ↗</span>
+      </div>
+    </div>
+
+    <div class="preview-box" style="margin-top:12px">
+      <div class="preview-label">Active page — "Work" is current page</div>
+      <div style="background:#FFFFFF;display:flex;align-items:center;padding:10px 28px;font-family:system-ui,sans-serif">
+        <div>
+          <p style="font-size:14px;color:#0F0D0C;font-weight:500;margin:0;line-height:1.2">Amit Kumar</p>
+          <p style="font-size:10px;color:#8A8880;margin:0;letter-spacing:0.3px">GenAI Engineer · Agentic AI</p>
+        </div>
+        <div style="display:flex;gap:22px;margin-left:auto;margin-right:22px;align-items:center">
+          <span style="font-size:12px;color:#0F0D0C;font-weight:500;border-bottom:2px solid #E85D0C;padding-bottom:2px">Work</span>
+          <span style="font-size:12px;color:#8A8880">Writing</span>
+          <span style="font-size:12px;color:#8A8880">About</span>
+        </div>
+        <span style="font-size:12px;color:#fff;background:#E85D0C;padding:6px 16px;border-radius:20px;font-weight:500">Contact ↗</span>
+      </div>
+    </div>
+
+    <div class="preview-box" style="margin-top:12px">
+      <div class="preview-label">Scrolled — glass airy (triggers after ~80px scroll) — S2</div>
+      <!-- Simulated page content behind -->
+      <div style="background:linear-gradient(180deg,#f8f7f5 0%,#fff 100%);position:relative;">
+        <div style="background:rgba(255,255,255,0.42);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(236,234,230,0.4);display:flex;align-items:center;padding:10px 28px;font-family:system-ui,sans-serif">
+          <div>
+            <p style="font-size:14px;color:#0F0D0C;font-weight:500;margin:0;line-height:1.2">Amit Kumar</p>
+            <p style="font-size:10px;color:#8A8880;margin:0;letter-spacing:0.3px">GenAI Engineer · Agentic AI</p>
+          </div>
+          <div style="display:flex;gap:22px;margin-left:auto;margin-right:22px;align-items:center">
+            <span style="font-size:12px;color:#0F0D0C;font-weight:500;border-bottom:2px solid #E85D0C;padding-bottom:2px">Work</span>
+            <span style="font-size:12px;color:#8A8880">Writing</span>
+            <span style="font-size:12px;color:#8A8880">About</span>
+          </div>
+          <span style="font-size:12px;color:#fff;background:#E85D0C;padding:6px 16px;border-radius:20px;font-weight:500">Contact ↗</span>
+        </div>
+        <div style="padding:20px 28px 8px;opacity:0.3;font-size:13px;color:#0F0D0C;font-family:system-ui,sans-serif">Building AI that actually ships. Multi-agent systems. RAG. Computer vision.</div>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Specs</h4>
+        <table>
+          <tr><td>Padding</td><td><code>10px 28px</code></td></tr>
+          <tr><td>Position</td><td><code>sticky top: 0; z-index: 100</code></td></tr>
+          <tr><td>Scroll trigger</td><td><code>~80px from top</code></td></tr>
+          <tr><td>Transition</td><td><code>background 0.3s ease, backdrop-filter 0.3s ease</code></td></tr>
+          <tr><td>Name</td><td><code>14px / weight 500 / #0F0D0C</code></td></tr>
+          <tr><td>Tagline</td><td><code>10px / #8A8880</code> — unchanged from default</td></tr>
+          <tr><td>Active link</td><td><code>#0F0D0C / border-bottom 2px solid #E85D0C</code></td></tr>
+          <tr><td>CTA pill</td><td>unchanged — #E85D0C bg / white text</td></tr>
+        </table>
+      </div>
+      <div class="spec-box">
+        <h4>Scrolled state CSS</h4>
+        <table>
+          <tr><td>background</td><td><code>rgba(255,255,255,0.42)</code></td></tr>
+          <tr><td>backdrop-filter</td><td><code>blur(16px)</code></td></tr>
+          <tr><td>-webkit-backdrop-filter</td><td><code>blur(16px)</code></td></tr>
+          <tr><td>border-bottom</td><td><code>1px solid rgba(236,234,230,0.4)</code></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. HERO ── -->
+  <div class="section" id="hero">
+    <p class="section-label">04</p>
+    <h2 class="section-title">Hero Section</h2>
+    <p class="section-desc">V4 stacked heading — large, bold, 3 lines. Orange on "actually" and "ships." Two pill CTAs. Body copy confirmed.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">Hero — full preview</div>
+      <div style="background:#FFFFFF;padding:52px 40px 44px">
+        <p style="font-size:11px;color:#C0BEB8;letter-spacing:2.5px;text-transform:uppercase;margin:0 0 18px;font-weight:500">Gurugram · Open to opportunities</p>
+        <h1 style="font-size:54px;color:#0F0D0C;margin:0;line-height:1.05;font-weight:500;letter-spacing:-2.5px">Building AI</h1>
+        <h1 style="font-size:54px;color:#0F0D0C;margin:0;line-height:1.05;font-weight:500;letter-spacing:-2.5px">that <span style="color:#E85D0C;font-family:'DM Serif Display',serif;font-style:italic;font-weight:400">actually</span></h1>
+        <h1 style="font-size:54px;color:#E85D0C;margin:0 0 22px;line-height:1.05;font-weight:500;letter-spacing:-2.5px;font-family:'DM Serif Display',serif;font-style:italic;font-weight:400">ships.</h1>
+        <p style="font-size:15px;color:#6B6860;max-width:460px;line-height:1.75;margin:0 0 28px"><span class="exp-years">4</span> years. Multi-agent systems. RAG. Computer vision.<br>QA automation at 10× speed.</p>
+        <div style="display:flex;gap:12px;align-items:center">
+          <span style="font-size:13px;color:#fff;background:#E85D0C;padding:10px 24px;border-radius:20px;font-weight:500">See case studies →</span>
+          <span style="font-size:13px;color:#6B6860;border:1px solid #E8E6E2;padding:10px 20px;border-radius:20px">Read my writing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Heading</h4>
+        <table>
+          <tr><td>Font size</td><td><code>54px</code></td></tr>
+          <tr><td>Weight</td><td><code>500</code></td></tr>
+          <tr><td>Letter spacing</td><td><code>-2.5px</code></td></tr>
+          <tr><td>Line height</td><td><code>1.05</code></td></tr>
+          <tr><td>"actually" + "ships."</td><td><code>#E85D0C</code> · <code>DM Serif Display</code> · italic · weight 400</td></tr>
+        </table>
+      </div>
+      <div class="spec-box">
+        <h4>Confirmed copy</h4>
+        <table>
+          <tr><td>Sub-label</td><td>Gurugram · Open to opportunities</td></tr>
+          <tr><td>H1 line 1</td><td>Building AI</td></tr>
+          <tr><td>H1 line 2</td><td>that <span style="color:#E85D0C">actually</span></td></tr>
+          <tr><td>H1 line 3</td><td style="color:#E85D0C">ships.</td></tr>
+          <tr><td>CTA 1</td><td>See case studies →</td></tr>
+          <tr><td>CTA 2</td><td>Read my writing</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. CARDS ── -->
+  <div class="section" id="cards">
+    <p class="section-label">05</p>
+    <h2 class="section-title">Cards</h2>
+    <p class="section-desc">V1 style — white background, no fill, top accent border. First card is featured (orange top border). Remaining cards use black top border. 3-column grid, gap 14px.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">All 3 project cards — hover default cards to see orange flip</div>
+      <style>
+        .proj-card {
+          padding:18px;background:#FFFFFF;border-radius:8px;border:1px solid #ECEAE6;
+          transition:border-top-color 0.15s ease, box-shadow 0.15s ease;cursor:pointer;
+        }
+        .proj-card.featured { border-top:3px solid #0F0D0C; }
+        .proj-card.default  { border-top:3px solid #0F0D0C; }
+        .proj-card:hover { border-top-color:#E85D0C; box-shadow:0 2px 12px rgba(232,93,12,0.08); }
+        .proj-card:hover .card-label  { color:#E85D0C; }
+        .proj-card:hover .card-cta    { color:#E85D0C; }
+        .card-label { font-size:10px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 8px;font-weight:500;color:#9A9890;transition:color 0.15s ease; }
+        .card-cta   { font-size:12px;color:#0F0D0C;transition:color 0.15s ease; }
+      </style>
+      <div style="background:#FFFFFF;padding:28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+
+        <!-- Card 1: Featured -->
+        <div class="proj-card featured">
+          <p class="card-label">Case study</p>
+          <p style="font-size:14px;color:#0F0D0C;margin:0 0 6px;font-weight:500">QA Automation Platform</p>
+          <p style="font-size:11px;color:#9A9890;margin:0 0 14px;line-height:1.6">8-agent system · 10× faster testing · under 4 min to first test · 99% coverage potential</p>
+          <p style="font-size:11px;color:#C0BEB8;margin:0 0 14px">LangGraph · LangChain · FastAPI · MySQL</p>
+          <span class="card-cta">Read case study →</span>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="proj-card default">
+          <p class="card-label">Case study</p>
+          <p style="font-size:14px;color:#0F0D0C;margin:0 0 6px;font-weight:500">Fracture Analysis AI</p>
+          <p style="font-size:11px;color:#9A9890;margin:0 0 14px;line-height:1.6">2 days → 10 min · >95% accuracy · 15+ polymer types · on-premise deployment</p>
+          <p style="font-size:11px;color:#C0BEB8;margin:0 0 14px">PyTorch · TensorFlow · OpenCV · Python</p>
+          <span class="card-cta">Read case study →</span>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="proj-card default">
+          <p class="card-label">Project</p>
+          <p style="font-size:14px;color:#0F0D0C;margin:0 0 6px;font-weight:500">3D GenAI Design Tool</p>
+          <p style="font-size:11px;color:#9A9890;margin:0 0 14px;line-height:1.6">NL → CadQuery/Blender script → working 3D CAD file · internal tool in active use</p>
+          <p style="font-size:11px;color:#C0BEB8;margin:0 0 14px">LLM fine-tuning · CadQuery · Blender · Python</p>
+          <span class="card-cta">Read more →</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Card specs</h4>
+        <table>
+          <tr><td>Background</td><td><code>#FFFFFF</code> (no fill)</td></tr>
+          <tr><td>Border</td><td><code>1px solid #ECEAE6</code></td></tr>
+          <tr><td>Border radius</td><td><code>8px</code></td></tr>
+          <tr><td>Padding</td><td><code>18px</code></td></tr>
+          <tr><td>Top border — featured</td><td><code>3px solid #E85D0C</code> (always orange, no hover change)</td></tr>
+          <tr><td>Top border — default</td><td><code>3px solid #0F0D0C</code> → hover: <code>#E85D0C</code></td></tr>
+          <tr><td>Hover shadow</td><td><code>0 2px 12px rgba(232,93,12,0.08)</code></td></tr>
+          <tr><td>Grid gap</td><td><code>14px</code></td></tr>
+          <tr><td>Transition</td><td><code>0.15s ease</code></td></tr>
+        </table>
+      </div>
+      <div class="spec-box">
+        <h4>Card typography + hover rule</h4>
+        <table>
+          <tr><td>Label default</td><td><code>10px / 500 / UC / #9A9890</code></td></tr>
+          <tr><td>Label hover</td><td><code>#E85D0C</code></td></tr>
+          <tr><td>Title</td><td><code>14px / 500 / #0F0D0C</code> (no change)</td></tr>
+          <tr><td>Description</td><td><code>11px / #9A9890 / lh 1.6</code> (no change)</td></tr>
+          <tr><td>Stack tags</td><td><code>11px / #C0BEB8</code> (no change)</td></tr>
+          <tr><td>CTA default</td><td><code>12px / #0F0D0C</code></td></tr>
+          <tr><td>CTA hover</td><td><code>#E85D0C</code></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 6. BUTTONS ── -->
+  <div class="section" id="buttons">
+    <p class="section-label">06</p>
+    <h2 class="section-title">Buttons</h2>
+    <p class="section-desc">All buttons are pill-shaped (border-radius: 20px). V5 pill style. Four types confirmed.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">All button types</div>
+      <div style="background:#FFFFFF;padding:28px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:13px;color:#fff;background:#E85D0C;padding:10px 24px;border-radius:20px;font-weight:500;cursor:pointer">Primary → filled</span>
+        <span style="font-size:13px;color:#6B6860;border:1px solid #E8E6E2;padding:10px 20px;border-radius:20px;cursor:pointer">Secondary — outline gray</span>
+        <span style="font-size:13px;color:#0F0D0C;border:1px solid #0F0D0C;padding:10px 20px;border-radius:20px;cursor:pointer">Ghost — outline black</span>
+        <span style="font-size:12px;color:#fff;background:#E85D0C;padding:6px 16px;border-radius:20px;font-weight:500;cursor:pointer">Nav CTA ↗</span>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Button specs</h4>
+        <table>
+          <tr><td>Primary</td><td><code>#E85D0C</code> bg · white text · <code>10px 24px</code> · 13px · 500</td></tr>
+          <tr><td>Secondary</td><td><code>#E8E6E2</code> border · <code>#6B6860</code> text · <code>10px 20px</code> · 13px</td></tr>
+          <tr><td>Ghost</td><td><code>#0F0D0C</code> border · <code>#0F0D0C</code> text · <code>10px 20px</code> · 13px</td></tr>
+          <tr><td>Nav CTA</td><td><code>#E85D0C</code> bg · white text · <code>6px 16px</code> · 12px · 500</td></tr>
+          <tr><td>All border-radius</td><td><code>20px</code> (pill)</td></tr>
+          <tr><td>Primary hover</td><td><code>#D05008</code> (darken 8%)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 7. SECTION DIVIDER ── -->
+  <div class="section" id="divider">
+    <p class="section-label">07</p>
+    <h2 class="section-title">Section Divider</h2>
+    <p class="section-desc">Used between the hero and cards, and between other major sections.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">Divider preview</div>
+      <div style="background:#FFFFFF;padding:24px 36px">
+        <div style="display:flex;align-items:center;gap:16px">
+          <div style="flex:1;height:1px;background:#F0EFED"></div>
+          <span style="font-size:10px;color:#C8C6C0;letter-spacing:2px;text-transform:uppercase">Selected work</span>
+          <div style="flex:1;height:1px;background:#F0EFED"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Divider specs</h4>
+        <table>
+          <tr><td>Line</td><td><code>1px solid #F0EFED</code></td></tr>
+          <tr><td>Label size</td><td><code>10px / UPPERCASE / 2px spacing</code></td></tr>
+          <tr><td>Label color</td><td><code>#C8C6C0</code></td></tr>
+          <tr><td>Margin</td><td><code>24px 0</code></td></tr>
+          <tr><td>Layout</td><td>flex row — line · label · line</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 8. FOOTER ── -->
+  <div class="section" id="footer">
+    <p class="section-label">08</p>
+    <h2 class="section-title">Footer — Finalized</h2>
+    <p class="section-desc">Two-part footer: tech strip sits above the main dark footer. Variant: F4-B + bold name.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">Tech strip (sits above main footer)</div>
+      <div style="background:#FAFAF8;border-top:1px solid #F0EFED;padding:14px 40px;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;gap:18px">
+          <span style="font-size:11px;color:#C0BEB8">LangGraph</span>
+          <span style="font-size:11px;color:#C0BEB8">LangChain</span>
+          <span style="font-size:11px;color:#C0BEB8">FastAPI</span>
+          <span style="font-size:11px;color:#C0BEB8">FAISS</span>
+          <span style="font-size:11px;color:#C0BEB8">PyTorch</span>
+          <span style="font-size:11px;color:#C0BEB8">AWS</span>
+        </div>
+        <span style="font-size:12px;color:#E85D0C">LinkedIn ↗</span>
+      </div>
+    </div>
+
+    <div class="preview-box" style="margin-top:12px">
+      <div class="preview-label">Main footer — hover Work + Connect links to see orange</div>
+      <style>
+        .ft-link {
+          font-size:12px;color:#5A5856;margin:0 0 6px;cursor:pointer;
+          transition:color 0.15s ease;display:block;
+        }
+        .ft-link:last-child { margin:0; }
+        .ft-link:hover { color:#E85D0C; }
+        .ft-link.orange { color:#E85D0C; }
+      </style>
+      <div style="background:#0F0D0C;border-top:2px solid #E85D0C;padding:36px 40px 20px;font-family:system-ui,sans-serif">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px">
+          <div>
+            <p style="font-size:26px;color:#FFFFFF;font-weight:500;letter-spacing:-0.8px;margin:0 0 4px">Amit Kumar</p>
+            <p style="font-size:12px;color:#5A5856;margin:0 0 18px">GenAI Engineer · Agentic AI</p>
+            <span style="font-size:12px;color:#fff;background:#E85D0C;padding:7px 18px;border-radius:20px;font-weight:500;cursor:pointer">Get in touch ↗</span>
+          </div>
+          <div style="display:flex;gap:32px">
+            <div>
+              <p style="font-size:10px;color:#3A3836;text-transform:uppercase;letter-spacing:1.5px;margin:0 0 10px;font-weight:500">Work</p>
+              <span class="ft-link">QA Automation</span>
+              <span class="ft-link">Fracture Analysis</span>
+              <span class="ft-link">3D GenAI</span>
+            </div>
+            <div>
+              <p style="font-size:10px;color:#3A3836;text-transform:uppercase;letter-spacing:1.5px;margin:0 0 10px;font-weight:500">Connect</p>
+              <span class="ft-link">LinkedIn ↗</span>
+              <span class="ft-link">GitHub ↗</span>
+              <span class="ft-link">Email ↗</span>
+            </div>
+          </div>
+        </div>
+        <div style="border-top:1px solid #2A2826;padding-top:16px;display:flex;justify-content:space-between">
+          <span style="font-size:11px;color:#3A3836">© 2026 Amit Kumar</span>
+          <span style="font-size:11px;color:#3A3836">Gurugram, India</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Footer specs</h4>
+        <table>
+          <tr><td>Background</td><td><code>#0F0D0C</code></td></tr>
+          <tr><td>Entry line</td><td><code>2px solid #E85D0C</code></td></tr>
+          <tr><td>Padding</td><td><code>36px 40px 20px</code></td></tr>
+          <tr><td>Name</td><td><code>26px / weight 500 / #FFFFFF / letter-spacing -0.8px</code></td></tr>
+          <tr><td>Tagline</td><td><code>12px / #5A5856</code></td></tr>
+          <tr><td>CTA pill</td><td><code>#E85D0C bg / white / 20px radius / 7px 18px</code></td></tr>
+          <tr><td>Column headers</td><td><code>10px / UPPERCASE / 1.5px / #3A3836</code></td></tr>
+          <tr><td>Column links default</td><td><code>12px / #5A5856</code></td></tr>
+          <tr><td>Column links hover</td><td><code>#E85D0C · transition 0.15s ease</code></td></tr>
+          <tr><td>LinkedIn</td><td><code>#E85D0C always (already active)</code></td></tr>
+          <tr><td>Copyright bar</td><td><code>border-top: 1px solid #2A2826 / 11px / #3A3836</code></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 9. SPACING ── -->
+  <div class="section" id="spacing">
+    <p class="section-label">09</p>
+    <h2 class="section-title">Spacing Tokens</h2>
+    <p class="section-desc">Consistent spacing used across all sections.</p>
+
+    <div class="spec-box">
+      <h4>Spacing</h4>
+      <table>
+        <tr><td>Section vertical padding</td><td><code>64px 40px</code></td></tr>
+        <tr><td>Hero padding</td><td><code>56px 40px 44px</code></td></tr>
+        <tr><td>Header padding</td><td><code>10px 28px</code></td></tr>
+        <tr><td>Card grid gap</td><td><code>14px</code></td></tr>
+        <tr><td>Card internal padding</td><td><code>18px</code></td></tr>
+        <tr><td>CTA button gap</td><td><code>12px</code></td></tr>
+        <tr><td>Footer strip padding</td><td><code>14px 40px</code></td></tr>
+        <tr><td>Max content width</td><td><code>900px</code> (centered)</td></tr>
+      </table>
+    </div>
+
+    <!-- PENDING NOTE -->
+    <div style="margin-top:28px;padding:20px 24px;background:#FFF8F5;border:1px solid #FDDCCC;border-radius:8px;border-left:3px solid #E85D0C">
+      <p style="font-size:12px;font-weight:500;color:#E85D0C;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Pending confirmation</p>
+      <p style="font-size:13px;color:#6B6860;line-height:1.6">The following sections have <strong>not</strong> been designed yet: <strong>Writing/Blog</strong>, <strong>Skills</strong>, <strong>Contact</strong>. About and Footer are now finalized.</p>
+    </div>
+  </div>
+
+  <!-- ── 10. ABOUT ── -->
+  <div class="section" id="about">
+    <p class="section-label">10</p>
+    <h2 class="section-title">About Section — Finalized</h2>
+    <p class="section-desc">Text left · photo right with 3 orange arcs (different angles) · stats row at bottom.</p>
+
+    <!-- Live preview -->
+    <div class="preview-box">
+      <div class="preview-label">About section — full preview</div>
+      <div style="background:#FFFFFF;padding:52px 40px;font-family:system-ui,-apple-system,sans-serif">
+
+        <!-- Top row: text left, photo+arcs right -->
+        <div style="display:flex;gap:40px;align-items:center;margin-bottom:36px">
+
+          <!-- Text -->
+          <div style="flex:1">
+            <p style="font-size:11px;color:#C0BEB8;text-transform:uppercase;letter-spacing:2.5px;font-weight:500;margin:0 0 16px">About</p>
+            <p style="font-size:15px;color:#6B6860;line-height:1.75;margin:0 0 14px">I'm a GenAI engineer based in Gurugram, building production AI systems that actually get used. <span class="exp-word">Four</span> years in, I've shipped agentic pipelines, computer vision tools, and fracture analysis systems across automotive, education, transport, and retail.</p>
+            <p style="font-size:15px;color:#6B6860;line-height:1.75;margin:0">Right now I'm at GlobalNodes, leading architecture of a multi-agent QA platform. When I'm not thinking in graphs and embeddings, I write about what I learn along the way.</p>
+          </div>
+
+          <!-- Photo + SVG arcs -->
+          <div style="position:relative;width:230px;height:230px;flex-shrink:0">
+            <svg width="230" height="230" viewBox="0 0 230 230" fill="none" style="position:absolute;top:0;left:0">
+              <!-- Arc 1: inner, thin, rotated -28° → gap upper-right -->
+              <path d="M 162.5,154.9 A 62,62 0 1,1 162.5,75.1" stroke="#E85D0C" stroke-width="1.5" fill="none" transform="rotate(-28, 115, 115)"/>
+              <!-- Arc 2: middle, thick, no rotation → gap pure right -->
+              <path d="M 177.0,167.1 A 81,81 0 1,1 177.0,62.9" stroke="#E85D0C" stroke-width="3" fill="none"/>
+              <!-- Arc 3: outer, thin, rotated +22° → gap lower-right, with dot -->
+              <g transform="rotate(22, 115, 115)">
+                <path d="M 189.0,177.9 A 98,98 0 1,1 189.0,52.1" stroke="#E85D0C" stroke-width="1" fill="none" opacity="0.55"/>
+                <circle cx="189.0" cy="52.1" r="4" fill="#E85D0C" opacity="0.75"/>
+              </g>
+            </svg>
+            <img src="image.png" style="position:absolute;top:50%;left:48%;transform:translate(-50%,-50%);width:114px;height:114px;border-radius:50%;object-fit:cover;object-position:center center;display:block">
+          </div>
+
+        </div>
+
+        <!-- Stats row -->
+        <div style="display:flex;padding-top:28px;border-top:1px solid #F0EFED">
+          <div style="flex:1;padding-right:24px">
+            <p style="font-size:30px;color:#E85D0C;font-weight:500;letter-spacing:-1px;margin:0 0 3px">4+</p>
+            <p style="font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;margin:0;font-weight:500">Years shipping AI</p>
+          </div>
+          <div style="flex:1;padding:0 24px;border-left:1px solid #F0EFED">
+            <p style="font-size:30px;color:#0F0D0C;font-weight:500;letter-spacing:-1px;margin:0 0 3px">4</p>
+            <p style="font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;margin:0;font-weight:500">Industries</p>
+          </div>
+          <div style="flex:1;padding:0 24px;border-left:1px solid #F0EFED">
+            <p style="font-size:30px;color:#0F0D0C;font-weight:500;letter-spacing:-1px;margin:0 0 3px">10×</p>
+            <p style="font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;margin:0;font-weight:500">Faster QA</p>
+          </div>
+          <div style="flex:1;padding-left:24px;border-left:1px solid #F0EFED">
+            <p style="font-size:30px;color:#0F0D0C;font-weight:500;letter-spacing:-1px;margin:0 0 3px">15+</p>
+            <p style="font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;margin:0;font-weight:500">Client Projects</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Layout</h4>
+        <table>
+          <tr><td>Layout</td><td>flex row — text (flex:1) + arc+photo container (230×230px)</td></tr>
+          <tr><td>Gap</td><td><code>40px</code></td></tr>
+          <tr><td>Align</td><td><code>align-items: center</code></td></tr>
+          <tr><td>Section padding</td><td><code>52px 40px</code></td></tr>
+        </table>
+      </div>
+      <div class="spec-box">
+        <h4>Sub-label + body text</h4>
+        <table>
+          <tr><td>Sub-label</td><td><code>11px / UPPERCASE / letter-spacing 2.5px / #C0BEB8 / weight 500</code></td></tr>
+          <tr><td>Body text</td><td><code>15px / #6B6860 / line-height 1.75</code> — 2 short paragraphs</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Photo</h4>
+        <table>
+          <tr><td>File</td><td><code>image.png</code> (root of portfolio folder)</td></tr>
+          <tr><td>Size</td><td><code>114px × 114px</code></td></tr>
+          <tr><td>Shape</td><td><code>border-radius: 50%</code></td></tr>
+          <tr><td>Fit</td><td><code>object-fit: cover; object-position: center center</code></td></tr>
+          <tr><td>Position</td><td>Absolute, centered inside 230×230 SVG container</td></tr>
+        </table>
+      </div>
+      <div class="spec-box">
+        <h4>Orange Arcs (SVG, center 115,115)</h4>
+        <table>
+          <tr><td>Arc 1 — inner</td><td>r=62 · gap ±40° · rotate(-28°) · stroke 1.5px · #E85D0C</td></tr>
+          <tr><td>Arc 2 — middle</td><td>r=81 · gap ±40° · no rotation · stroke 3px · #E85D0C</td></tr>
+          <tr><td>Arc 3 — outer</td><td>r=98 · gap ±40° · rotate(+22°) · stroke 1px · #E85D0C opacity 0.55</td></tr>
+          <tr><td>Dot</td><td>r=4 · fill #E85D0C opacity 0.75 · at tip of outer arc</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Stats Row</h4>
+        <table>
+          <tr><td>Border-top</td><td><code>1px solid #F0EFED</code> · padding-top 28px</td></tr>
+          <tr><td>Layout</td><td>4 equal columns · separated by <code>1px solid #F0EFED</code> dividers</td></tr>
+          <tr><td>Number</td><td><code>30px / weight 500 / letter-spacing -1px</code> — first stat orange (#E85D0C), rest #0F0D0C</td></tr>
+          <tr><td>Label</td><td><code>10px / UPPERCASE / letter-spacing 1.5px / #C0BEB8 / weight 500</code></td></tr>
+          <tr><td>Values</td><td>4+ Years shipping AI · 4 Industries · 10× Faster QA · 15+ Client Projects</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 11. EXPERIENCE + EDUCATION ── -->
+  <div class="section" id="experience">
+    <p class="section-label">11</p>
+    <h2 class="section-title">Experience + Education — Finalized</h2>
+    <p class="section-desc">Vertical timeline · orange dot = current role · hollow circle = past · rounded square = education · orange bullet dots for impact points.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">Experience + Education — full preview</div>
+      <div style="background:#FFFFFF;padding:52px 40px;font-family:system-ui,-apple-system,sans-serif">
+        <p style="font-size:11px;color:#C0BEB8;text-transform:uppercase;letter-spacing:2.5px;font-weight:500;margin:0 0 36px">Experience</p>
+        <div style="position:relative;padding-left:28px">
+          <div style="position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:#F0EFED"></div>
+
+          <!-- GlobalNodes -->
+          <div style="position:relative;margin-bottom:36px">
+            <div style="position:absolute;left:-22px;top:5px;width:13px;height:13px;border-radius:50%;background:#E85D0C;border:2px solid #fff;box-shadow:0 0 0 1.5px #E85D0C"></div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <p style="font-size:14px;font-weight:500;color:#0F0D0C;margin:0">Senior Data Scientist · Agentic AI</p>
+              <span style="font-size:11px;color:#C0BEB8;white-space:nowrap;margin-left:16px">Jul 2025 — Present</span>
+            </div>
+            <p style="font-size:12px;color:#E85D0C;font-weight:500;margin:4px 0 10px">GlobalNodes · Gurugram</p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px">
+              <li style="font-size:12px;color:#9A9890;line-height:1.6;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#E85D0C;font-size:14px;line-height:1.2">•</span>Architected an 8–11 agent QA platform — NLP instruction to first test in under 4 minutes, 10× faster than manual testing</li>
+              <li style="font-size:12px;color:#9A9890;line-height:1.6;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#E85D0C;font-size:14px;line-height:1.2">•</span>Built RAG pipelines using FAISS + OpenAI Embeddings for context-aware, codebase-grounded test generation</li>
+              <li style="font-size:12px;color:#9A9890;line-height:1.6;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#E85D0C;font-size:14px;line-height:1.2">•</span>Designed FastAPI backend with JWT auth, RBAC, and MySQL ORM supporting full test lifecycle automation</li>
+            </ul>
+          </div>
+
+          <!-- Unthinkable -->
+          <div style="position:relative;margin-bottom:36px">
+            <div style="position:absolute;left:-22px;top:5px;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid #ECEAE6"></div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <p style="font-size:14px;font-weight:500;color:#0F0D0C;margin:0">Associate → Senior Associate AI/ML</p>
+              <span style="font-size:11px;color:#C0BEB8;white-space:nowrap;margin-left:16px">Nov 2021 — Jul 2025</span>
+            </div>
+            <p style="font-size:12px;color:#8A8880;font-weight:500;margin:4px 0 10px">Unthinkable Solutions · Gurugram</p>
+            <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:5px">
+              <li style="font-size:12px;color:#9A9890;line-height:1.6;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#E85D0C;font-size:14px;line-height:1.2">•</span>Reduced fracture analysis from 2 days to under 10 minutes at &gt;95% accuracy — deployed on-premise at automotive client</li>
+              <li style="font-size:12px;color:#9A9890;line-height:1.6;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#E85D0C;font-size:14px;line-height:1.2">•</span>Delivered computer vision solutions (detection, classification, segmentation) across 5+ projects in automotive, education, transport, retail</li>
+              <li style="font-size:12px;color:#9A9890;line-height:1.6;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#E85D0C;font-size:14px;line-height:1.2">•</span>Built LangChain-based GenAI workflows and LLM-powered applications for enterprise use cases</li>
+              <li style="font-size:12px;color:#9A9890;line-height:1.6;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#E85D0C;font-size:14px;line-height:1.2">•</span>Shipped scalable ML pipelines on AWS using SageMaker, EC2, and Docker in production environments</li>
+            </ul>
+          </div>
+
+          <!-- Education -->
+          <div style="position:relative">
+            <div style="position:absolute;left:-22px;top:5px;width:13px;height:13px;border-radius:3px;background:#fff;border:2px solid #ECEAE6"></div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between">
+              <p style="font-size:14px;font-weight:500;color:#0F0D0C;margin:0">B.Tech in Computer Science</p>
+              <span style="font-size:11px;color:#C0BEB8;white-space:nowrap;margin-left:16px">2018 — 2022</span>
+            </div>
+            <p style="font-size:12px;color:#8A8880;font-weight:500;margin:4px 0 0">Meerut Institute of Engineering and Technology · CGPA 7.98</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Timeline specs</h4>
+        <table>
+          <tr><td>Vertical line</td><td><code>1px solid #F0EFED</code> · left:6px</td></tr>
+          <tr><td>Current role dot</td><td><code>13px circle · #E85D0C fill · 2px white border · 1.5px #E85D0C outline</code></td></tr>
+          <tr><td>Past role dot</td><td><code>13px circle · #fff fill · 2px #ECEAE6 border</code></td></tr>
+          <tr><td>Education marker</td><td><code>13px rounded square (3px) · #fff fill · 2px #ECEAE6 border</code></td></tr>
+          <tr><td>Role title</td><td><code>14px / weight 500 / #0F0D0C</code></td></tr>
+          <tr><td>Current company</td><td><code>12px / weight 500 / #E85D0C</code></td></tr>
+          <tr><td>Past company</td><td><code>12px / weight 500 / #8A8880</code></td></tr>
+          <tr><td>Date</td><td><code>11px / #C0BEB8</code></td></tr>
+          <tr><td>Bullet dot</td><td><code>• / #E85D0C / 14px</code></td></tr>
+          <tr><td>Bullet text</td><td><code>12px / #9A9890 / line-height 1.6</code></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 12. SKILLS ── -->
+  <div class="section" id="skills">
+    <p class="section-label">12</p>
+    <h2 class="section-title">Skills — Finalized</h2>
+    <p class="section-desc">SK1-A: horizontal rows · left orange accent bar on primary category (GenAI & Agents) · orange pills for primary · neutral pills for rest · hairline dividers between rows.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">Skills — full preview (hover each row to see accent bar)</div>
+      <div style="background:#FFFFFF;padding:52px 40px;font-family:system-ui,-apple-system,sans-serif">
+        <style>
+          .skill-row {
+            display:flex;align-items:flex-start;gap:0;padding:16px 0;border-bottom:1px solid #F0EFED;
+            transition:background 0.15s ease;cursor:default;border-radius:4px;margin:0 -8px;padding-left:8px;padding-right:8px;
+          }
+          .skill-row:last-child { border-bottom:none; }
+          .skill-row:hover { background:#FAFAF8; }
+          .skill-bar { width:3px;background:transparent;border-radius:2px;align-self:stretch;flex-shrink:0;margin-right:20px;transition:background 0.15s ease; }
+          .skill-row:hover .skill-bar { background:#E85D0C; }
+          .skill-cat { font-size:11px;font-weight:500;color:#0F0D0C;text-transform:uppercase;letter-spacing:1.2px;width:140px;flex-shrink:0;padding-top:3px;margin:0;transition:color 0.15s ease; }
+          .skill-row:hover .skill-cat { color:#E85D0C; }
+          .skill-tags { display:flex;flex-wrap:wrap;gap:6px; }
+          .stag-n { display:inline-block;font-size:11px;padding:4px 10px;border-radius:20px;line-height:1;background:#F7F6F4;color:#6B6860;border:1px solid #ECEAE6; }
+          .skill-row:hover .stag-n { background:#FFF3EE;color:#E85D0C;border-color:#FDDCCC;transition:all 0.15s ease; }
+        </style>
+        <p style="font-size:11px;color:#C0BEB8;text-transform:uppercase;letter-spacing:2.5px;font-weight:500;margin:0 0 32px">Skills</p>
+
+        <div style="display:flex;flex-direction:column">
+
+          <div class="skill-row">
+            <div class="skill-bar"></div>
+            <p class="skill-cat">GenAI & Agents</p>
+            <div class="skill-tags">
+              <span class="stag-n">LangGraph</span>
+              <span class="stag-n">LangChain</span>
+              <span class="stag-n">Agentic AI</span>
+              <span class="stag-n">Multi-Agent Systems</span>
+              <span class="stag-n">RAG</span>
+              <span class="stag-n">Tool Calling</span>
+              <span class="stag-n">NLP</span>
+            </div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-bar"></div>
+            <p class="skill-cat">LLMs & Retrieval</p>
+            <div class="skill-tags">
+              <span class="stag-n">FAISS</span>
+              <span class="stag-n">Vector Search</span>
+              <span class="stag-n">OpenAI Embeddings</span>
+              <span class="stag-n">SentenceTransformers</span>
+              <span class="stag-n">LLM Fine-tuning</span>
+            </div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-bar"></div>
+            <p class="skill-cat">Backend</p>
+            <div class="skill-tags">
+              <span class="stag-n">Python</span>
+              <span class="stag-n">FastAPI</span>
+              <span class="stag-n">Django</span>
+              <span class="stag-n">Flask</span>
+              <span class="stag-n">REST APIs</span>
+              <span class="stag-n">MySQL</span>
+              <span class="stag-n">JWT · RBAC</span>
+              <span class="stag-n">Async Architecture</span>
+            </div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-bar"></div>
+            <p class="skill-cat">ML & CV</p>
+            <div class="skill-tags">
+              <span class="stag-n">PyTorch</span>
+              <span class="stag-n">TensorFlow</span>
+              <span class="stag-n">OpenCV</span>
+              <span class="stag-n">Object Detection</span>
+              <span class="stag-n">Classification</span>
+              <span class="stag-n">Scikit-learn</span>
+              <span class="stag-n">Pandas · NumPy</span>
+            </div>
+          </div>
+
+          <div class="skill-row">
+            <div class="skill-bar"></div>
+            <p class="skill-cat">Cloud & DevOps</p>
+            <div class="skill-tags">
+              <span class="stag-n">AWS</span>
+              <span class="stag-n">SageMaker</span>
+              <span class="stag-n">EC2</span>
+              <span class="stag-n">Docker</span>
+              <span class="stag-n">Docker Compose</span>
+              <span class="stag-n">Git</span>
+              <span class="stag-n">Linux</span>
+              <span class="stag-n">CI/CD</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Skills section specs</h4>
+        <table>
+          <tr><td>Layout</td><td>Full-width rows · label left (140px fixed) · tags flex-wrap right</td></tr>
+          <tr><td>Default state</td><td>Transparent left bar · category label #0F0D0C · neutral pills (#F7F6F4 bg / #ECEAE6 border / #6B6860 text)</td></tr>
+          <tr><td>Hover state</td><td>3px #E85D0C left bar · category label → #E85D0C · pills → orange (#FFF3EE bg / #FDDCCC border / #E85D0C text) · row bg #FAFAF8</td></tr>
+          <tr><td>Transition</td><td>all 0.15s ease</td></tr>
+          <tr><td>Row divider</td><td>1px solid #F0EFED · last row no border</td></tr>
+          <tr><td>Category label</td><td>11px / weight 500 / uppercase / letter-spacing 1.2px</td></tr>
+          <tr><td>Tag pill</td><td>11px / padding 4px 10px / border-radius 20px</td></tr>
+          <tr><td>Tag gap</td><td>6px</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 13. RECOMMENDATIONS ── -->
+  <div class="section" id="recommendations">
+    <p class="section-label">13</p>
+    <h2 class="section-title">Recommendations — Finalized</h2>
+    <p class="section-desc">REC3: ultra minimal · italic quote text · orange dash before anonymous attribution · 3-column grid · no borders, no cards.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">Recommendations — full preview</div>
+      <div style="background:#FFFFFF;padding:52px 40px;font-family:system-ui,-apple-system,sans-serif">
+        <p style="font-size:11px;color:#C0BEB8;text-transform:uppercase;letter-spacing:2.5px;font-weight:500;margin:0 0 32px">What people say</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+
+          <div>
+            <p style="font-size:13px;color:#E85D0C;line-height:1.75;font-style:italic;font-weight:500;margin:0 0 4px">Invaluable team member.</p>
+            <p style="font-size:13px;color:#9A9890;line-height:1.75;font-style:italic;margin:0 0 16px">Exceptional skills, attention to detail, and the ability to solve complex problems. Consistently delivered high-quality code on schedule.</p>
+            <p style="font-size:11px;color:#C0BEB8;margin:0">Client · Apr 2025</p>
+          </div>
+
+          <div>
+            <p style="font-size:13px;color:#E85D0C;line-height:1.75;font-style:italic;font-weight:500;margin:0 0 4px">Enthusiasm for AI sets him apart.</p>
+            <p style="font-size:13px;color:#9A9890;line-height:1.75;font-style:italic;margin:0 0 16px">Deep knowledge across ML and Data Engineering, with the ability to communicate complex concepts to non-technical users.</p>
+            <p style="font-size:11px;color:#C0BEB8;margin:0">Direct Manager · Mar 2025</p>
+          </div>
+
+          <div>
+            <p style="font-size:13px;color:#E85D0C;line-height:1.75;font-style:italic;font-weight:500;margin:0 0 4px">Delivered on time despite steep learning curves.</p>
+            <p style="font-size:13px;color:#9A9890;line-height:1.75;font-style:italic;margin:0 0 16px">High-quality solutions on tight deadlines — always aligning with the overall product vision.</p>
+            <p style="font-size:11px;color:#C0BEB8;margin:0">Team Peer · Mar 2025</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Recommendations specs</h4>
+        <table>
+          <tr><td>Layout</td><td>3-column grid · gap 24px · no borders, no background fill</td></tr>
+          <tr><td>First line (hook)</td><td>13px / italic / weight 500 / #E85D0C · margin-bottom 4px</td></tr>
+          <tr><td>Body text</td><td>13px / italic / #9A9890 / line-height 1.75 · margin-bottom 16px</td></tr>
+          <tr><td>Attribution</td><td>11px / #C0BEB8 · relationship + month/year only (anonymous)</td></tr>
+          <tr><td>No quote marks</td><td>Orange first-line IS the visual anchor — no extra decoration needed</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 14. WRITING ── -->
+  <div class="section" id="writing">
+    <p class="section-label">14</p>
+    <h2 class="section-title">Writing — Finalized</h2>
+    <p class="section-desc">W3-B: 2 featured cards top (with excerpt) · 3 smaller cards below (title only) · Medium "coming soon" strip. All cards use hover → orange top border + CTA color flip. Post titles are placeholder — swap with actual LinkedIn posts before build.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">Writing — full preview (hover cards)</div>
+      <div style="background:#FFFFFF;padding:52px 40px;font-family:system-ui,-apple-system,sans-serif">
+        <style>
+          .w-card {
+            border:1px solid #ECEAE6;border-radius:8px;padding:22px;
+            border-top:3px solid #0F0D0C;cursor:pointer;
+            transition:border-top-color 0.15s ease,box-shadow 0.15s ease;
+          }
+          .w-card:hover { border-top-color:#E85D0C; box-shadow:0 2px 12px rgba(232,93,12,0.08); }
+          .w-card:hover .w-cta { color:#E85D0C; }
+          .w-tag { font-size:10px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1.5px;font-weight:500;margin:0 0 8px; }
+          .w-cta { font-size:12px;color:#0F0D0C;transition:color 0.15s ease; }
+        </style>
+        <p style="font-size:11px;color:#C0BEB8;text-transform:uppercase;letter-spacing:2.5px;font-weight:500;margin:0 0 32px">Writing</p>
+
+        <!-- 2 featured -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div class="w-card">
+            <p class="w-tag">LinkedIn · AI</p>
+            <p style="font-size:16px;color:#0F0D0C;font-weight:500;margin:0 0 8px;line-height:1.35">Why most RAG pipelines fail in production — and how to fix them</p>
+            <p style="font-size:12px;color:#9A9890;line-height:1.6;margin:0 0 14px">Most teams get retrieval wrong before they ever touch the LLM. Here's what actually matters when building context-aware systems...</p>
+            <span class="w-cta">Read on LinkedIn →</span>
+          </div>
+          <div class="w-card">
+            <p class="w-tag">LinkedIn · Agents</p>
+            <p style="font-size:16px;color:#0F0D0C;font-weight:500;margin:0 0 8px;line-height:1.35">Building multi-agent systems that don't collapse under real workloads</p>
+            <p style="font-size:12px;color:#9A9890;line-height:1.6;margin:0 0 14px">8 agents, one goal, zero hallucinations. What we learned shipping an agentic QA system at scale...</p>
+            <span class="w-cta">Read on LinkedIn →</span>
+          </div>
+        </div>
+
+        <!-- 3 smaller -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px">
+          <div class="w-card" style="padding:18px">
+            <p class="w-tag">LinkedIn · ML</p>
+            <p style="font-size:13px;color:#0F0D0C;font-weight:500;margin:0 0 12px;line-height:1.4">From 2 days to 10 minutes — how CV replaced manual fracture analysis</p>
+            <span class="w-cta">Read →</span>
+          </div>
+          <div class="w-card" style="padding:18px">
+            <p class="w-tag">LinkedIn · GenAI</p>
+            <p style="font-size:13px;color:#0F0D0C;font-weight:500;margin:0 0 12px;line-height:1.4">Natural language to 3D CAD — what I learned building the prototype</p>
+            <span class="w-cta">Read →</span>
+          </div>
+          <div class="w-card" style="padding:18px">
+            <p class="w-tag">LinkedIn · Career</p>
+            <p style="font-size:13px;color:#0F0D0C;font-weight:500;margin:0 0 12px;line-height:1.4">What shipping AI to manufacturing taught me about production readiness</p>
+            <span class="w-cta">Read →</span>
+          </div>
+        </div>
+
+        <!-- Combined strip: show more + medium -->
+        <div style="background:#F7F6F4;border-radius:8px;padding:14px 20px;display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:12px;color:#0F0D0C;font-weight:500;cursor:pointer">View all posts on LinkedIn ↗</span>
+          <span style="font-size:11px;color:#C0BEB8;white-space:nowrap;margin-left:20px">More writing coming on Medium</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Writing section specs</h4>
+        <table>
+          <tr><td>Featured row</td><td>2-col grid · gap 14px · padding 22px · full excerpt</td></tr>
+          <tr><td>Secondary row</td><td>3-col grid · gap 12px · padding 18px · title only</td></tr>
+          <tr><td>Card default</td><td>border-top: 3px solid #0F0D0C · 1px #ECEAE6 border · 8px radius</td></tr>
+          <tr><td>Card hover</td><td>border-top → #E85D0C · shadow: 0 2px 12px rgba(232,93,12,0.08) · CTA → #E85D0C</td></tr>
+          <tr><td>Tag</td><td>10px / #C0BEB8 / uppercase / 1.5px spacing</td></tr>
+          <tr><td>Featured title</td><td>16px / weight 500 / #0F0D0C</td></tr>
+          <tr><td>Featured excerpt</td><td>12px / #9A9890 / line-height 1.6</td></tr>
+          <tr><td>Small title</td><td>13px / weight 500 / #0F0D0C</td></tr>
+          <tr><td>CTA default</td><td>12px / #0F0D0C</td></tr>
+          <tr><td>Bottom strip</td><td>#F7F6F4 bg · 8px radius · 14px 20px padding · "View all on LinkedIn →" left (#0F0D0C 500) · "More writing coming on Medium" right (#C0BEB8)</td></tr>
+          <tr><td>Content</td><td>Placeholder — swap with actual LinkedIn post titles + URLs before build</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 15. CONTACT ── -->
+  <div class="section" id="contact">
+    <p class="section-label">15</p>
+    <h2 class="section-title">Contact — Finalized</h2>
+    <p class="section-desc">C2 variant — left-aligned · orange accent on last word of headline · 2 CTA pills · no availability tag.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">Contact — full preview</div>
+      <div style="background:#FFFFFF;padding:72px 40px;font-family:system-ui,-apple-system,sans-serif">
+        <p style="font-size:11px;color:#C0BEB8;text-transform:uppercase;letter-spacing:2.5px;font-weight:500;margin:0 0 20px">Contact</p>
+        <h2 style="font-size:36px;font-weight:500;color:#0F0D0C;letter-spacing:-1px;margin:0 0 12px;line-height:1.2">Let's build something<br>that actually <span style="color:#E85D0C">ships.</span></h2>
+        <p style="font-size:14px;color:#9A9890;margin:0 0 32px;line-height:1.7;max-width:400px">Open to consulting engagements, full-time roles, and interesting AI problems.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <span style="display:inline-block;font-size:13px;color:#fff;background:#E85D0C;padding:11px 26px;border-radius:20px;font-weight:500;cursor:pointer">Get in touch ↗</span>
+          <span style="display:inline-block;font-size:13px;color:#0F0D0C;border:1px solid #ECEAE6;padding:11px 22px;border-radius:20px;cursor:pointer">View LinkedIn ↗</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Contact section specs</h4>
+        <table>
+          <tr><td>Layout</td><td>Left-aligned · max-width 900px centered</td></tr>
+          <tr><td>Section padding</td><td>72px 40px</td></tr>
+          <tr><td>Headline</td><td>36px / weight 500 / letter-spacing -1px / line-height 1.2</td></tr>
+          <tr><td>Headline accent</td><td>"ships." → <code>#E85D0C</code></td></tr>
+          <tr><td>Body</td><td>14px / #9A9890 / line-height 1.7 / max-width 400px</td></tr>
+          <tr><td>CTA primary</td><td>#E85D0C bg / white / 20px radius / 11px 26px</td></tr>
+          <tr><td>CTA secondary</td><td>1px #ECEAE6 border / #0F0D0C / 20px radius / 11px 22px</td></tr>
+          <tr><td>CTA gap</td><td>12px</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 16. MOBILE RESPONSIVENESS ── -->
+  <div class="section" id="mobile">
+    <p class="section-label">16</p>
+    <h2 class="section-title">Mobile Responsiveness — Finalized</h2>
+    <p class="section-desc">Breakpoint: 768px. Orange interaction rule: desktop = :hover, mobile = :active (tap). Nothing is permanently orange on mobile just because hover doesn't exist — the resting state stays the same as desktop default.</p>
+
+    <div class="preview-box">
+      <div class="preview-label">Mobile layout previews — 375px viewport</div>
+      <div style="background:#F7F6F4;padding:28px;display:flex;gap:20px;flex-wrap:wrap;font-family:system-ui,-apple-system,sans-serif">
+
+        <!-- Phone frame: Header -->
+        <div style="width:200px">
+          <p style="font-size:10px;color:#B0AEA8;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">Header</p>
+          <div style="background:#fff;border:1px solid #ECEAE6;border-radius:10px;overflow:hidden">
+            <div style="padding:12px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #F0EFED">
+              <div>
+                <p style="font-size:12px;font-weight:500;color:#0F0D0C;margin:0">Amit Kumar</p>
+                <p style="font-size:9px;color:#9A9890;margin:0">GenAI Engineer</p>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <span style="font-size:10px;color:#fff;background:#E85D0C;padding:4px 10px;border-radius:20px;font-weight:500">Let's talk ↗</span>
+                <span style="font-size:15px;color:#0F0D0C;line-height:1">☰</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone frame: Cards (1-col) -->
+        <div style="width:200px">
+          <p style="font-size:10px;color:#B0AEA8;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">Cards — 1 col</p>
+          <div style="background:#fff;border:1px solid #ECEAE6;border-radius:10px;overflow:hidden;padding:12px;display:flex;flex-direction:column;gap:8px">
+            <div style="border:1px solid #ECEAE6;border-radius:6px;padding:12px;border-top:3px solid #0F0D0C">
+              <p style="font-size:9px;color:#9A9890;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;font-weight:500">Case study</p>
+              <p style="font-size:11px;color:#0F0D0C;font-weight:500;margin:0 0 6px;line-height:1.3">QA Automation Platform</p>
+              <span style="font-size:10px;color:#0F0D0C">Read →</span>
+            </div>
+            <div style="border:1px solid #ECEAE6;border-radius:6px;padding:12px;border-top:3px solid #0F0D0C">
+              <p style="font-size:9px;color:#9A9890;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;font-weight:500">Case study</p>
+              <p style="font-size:11px;color:#0F0D0C;font-weight:500;margin:0 0 6px;line-height:1.3">Fracture Analysis AI</p>
+              <span style="font-size:10px;color:#0F0D0C">Read →</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone frame: Skills (label above) -->
+        <div style="width:200px">
+          <p style="font-size:10px;color:#B0AEA8;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">Skills — label above</p>
+          <div style="background:#fff;border:1px solid #ECEAE6;border-radius:10px;overflow:hidden;padding:14px">
+            <div style="padding:8px 0;border-bottom:1px solid #F0EFED">
+              <p style="font-size:9px;font-weight:500;color:#0F0D0C;text-transform:uppercase;letter-spacing:1px;margin:0 0 6px">GenAI & Agents</p>
+              <div style="display:flex;flex-wrap:wrap;gap:4px">
+                <span style="font-size:9px;padding:3px 7px;border-radius:20px;background:#F7F6F4;color:#6B6860;border:1px solid #ECEAE6">LangGraph</span>
+                <span style="font-size:9px;padding:3px 7px;border-radius:20px;background:#F7F6F4;color:#6B6860;border:1px solid #ECEAE6">LangChain</span>
+                <span style="font-size:9px;padding:3px 7px;border-radius:20px;background:#F7F6F4;color:#6B6860;border:1px solid #ECEAE6">RAG</span>
+              </div>
+            </div>
+            <div style="padding:8px 0">
+              <p style="font-size:9px;font-weight:500;color:#0F0D0C;text-transform:uppercase;letter-spacing:1px;margin:0 0 6px">Backend</p>
+              <div style="display:flex;flex-wrap:wrap;gap:4px">
+                <span style="font-size:9px;padding:3px 7px;border-radius:20px;background:#F7F6F4;color:#6B6860;border:1px solid #ECEAE6">Python</span>
+                <span style="font-size:9px;padding:3px 7px;border-radius:20px;background:#F7F6F4;color:#6B6860;border:1px solid #ECEAE6">FastAPI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone frame: Recommendations (1-col) -->
+        <div style="width:200px">
+          <p style="font-size:10px;color:#B0AEA8;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">Recommendations — 1 col</p>
+          <div style="background:#fff;border:1px solid #ECEAE6;border-radius:10px;overflow:hidden;padding:14px;display:flex;flex-direction:column;gap:12px">
+            <div style="padding-bottom:12px;border-bottom:1px solid #F0EFED">
+              <p style="font-size:10px;color:#E85D0C;font-style:italic;font-weight:500;margin:0 0 3px">Invaluable team member.</p>
+              <p style="font-size:10px;color:#9A9890;font-style:italic;line-height:1.5;margin:0 0 6px">Exceptional skills, attention to detail...</p>
+              <p style="font-size:9px;color:#C0BEB8;margin:0">Client · Apr 2025</p>
+            </div>
+            <div>
+              <p style="font-size:10px;color:#E85D0C;font-style:italic;font-weight:500;margin:0 0 3px">Enthusiasm for AI sets him apart.</p>
+              <p style="font-size:10px;color:#9A9890;font-style:italic;line-height:1.5;margin:0 0 6px">Deep knowledge across ML and Data Engineering...</p>
+              <p style="font-size:9px;color:#C0BEB8;margin:0">Manager · Mar 2025</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone frame: Hero -->
+        <div style="width:200px">
+          <p style="font-size:10px;color:#B0AEA8;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">Hero</p>
+          <div style="background:#fff;border:1px solid #ECEAE6;border-radius:10px;overflow:hidden;padding:28px 16px 20px">
+            <p style="font-size:9px;color:#C0BEB8;text-transform:uppercase;letter-spacing:2px;font-weight:500;margin:0 0 10px">GenAI Engineer · Agentic AI</p>
+            <h2 style="font-size:22px;color:#0F0D0C;font-weight:500;letter-spacing:-0.8px;line-height:1.2;margin:0 0 10px">I build AI systems that <span style="color:#E85D0C">actually ship.</span></h2>
+            <p style="font-size:11px;color:#9A9890;line-height:1.6;margin:0 0 18px"><span class="exp-years">4</span>+ years building agentic AI, RAG pipelines and computer vision systems across industries.</p>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:11px;color:#fff;background:#E85D0C;padding:9px 16px;border-radius:20px;font-weight:500;text-align:center">See my work ↓</span>
+              <span style="font-size:11px;color:#0F0D0C;border:1px solid #ECEAE6;padding:9px 16px;border-radius:20px;text-align:center">Download CV</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone frame: Experience -->
+        <div style="width:200px">
+          <p style="font-size:10px;color:#B0AEA8;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">Experience — timeline</p>
+          <div style="background:#fff;border:1px solid #ECEAE6;border-radius:10px;overflow:hidden;padding:14px 14px 14px 28px">
+            <p style="font-size:9px;color:#C0BEB8;text-transform:uppercase;letter-spacing:2px;font-weight:500;margin:0 0 14px">Experience</p>
+            <div style="position:relative">
+              <div style="position:absolute;left:-16px;top:4px;bottom:4px;width:1px;background:#F0EFED"></div>
+              <!-- Current -->
+              <div style="position:relative;margin-bottom:20px">
+                <div style="position:absolute;left:-20px;top:4px;width:10px;height:10px;border-radius:50%;background:#E85D0C;border:2px solid #fff;box-shadow:0 0 0 1.5px #E85D0C"></div>
+                <p style="font-size:11px;font-weight:500;color:#0F0D0C;margin:0 0 1px">Senior Data Scientist</p>
+                <p style="font-size:9px;color:#E85D0C;font-weight:500;margin:0 0 1px">GlobalNodes</p>
+                <p style="font-size:9px;color:#C0BEB8;margin:0">Jul 2025 — Present</p>
+              </div>
+              <!-- Past -->
+              <div style="position:relative;margin-bottom:20px">
+                <div style="position:absolute;left:-20px;top:4px;width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid #ECEAE6"></div>
+                <p style="font-size:11px;font-weight:500;color:#0F0D0C;margin:0 0 1px">Associate → Senior AI/ML</p>
+                <p style="font-size:9px;color:#8A8880;font-weight:500;margin:0 0 1px">Unthinkable Solutions</p>
+                <p style="font-size:9px;color:#C0BEB8;margin:0">Nov 2021 — Jul 2025</p>
+              </div>
+              <!-- Education -->
+              <div style="position:relative">
+                <div style="position:absolute;left:-20px;top:4px;width:10px;height:10px;border-radius:3px;background:#fff;border:2px solid #ECEAE6"></div>
+                <p style="font-size:11px;font-weight:500;color:#0F0D0C;margin:0 0 1px">BTech Computer Science</p>
+                <p style="font-size:9px;color:#8A8880;font-weight:500;margin:0 0 1px">MIET · Meerut</p>
+                <p style="font-size:9px;color:#C0BEB8;margin:0">2018 — 2022</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone frame: About -->
+        <div style="width:200px">
+          <p style="font-size:10px;color:#B0AEA8;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">About — photo top</p>
+          <div style="background:#fff;border:1px solid #ECEAE6;border-radius:10px;overflow:hidden;padding:20px 16px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+            <!-- SVG arcs + photo centered -->
+            <div style="position:relative;width:90px;height:90px">
+              <svg width="90" height="90" viewBox="0 0 230 230" fill="none" style="position:absolute;top:0;left:0;width:100%;height:100%">
+                <path d="M 162.5,154.9 A 62,62 0 1,1 162.5,75.1" stroke="#E85D0C" stroke-width="1.5" fill="none" transform="rotate(-28, 115, 115)"/>
+                <path d="M 177.0,167.1 A 81,81 0 1,1 177.0,62.9" stroke="#E85D0C" stroke-width="3" fill="none"/>
+                <g transform="rotate(22, 115, 115)">
+                  <path d="M 189.0,177.9 A 98,98 0 1,1 189.0,52.1" stroke="#E85D0C" stroke-width="1" fill="none" opacity="0.55"/>
+                  <circle cx="189.0" cy="52.1" r="4" fill="#E85D0C" opacity="0.75"/>
+                </g>
+              </svg>
+              <img src="image.png" style="position:absolute;top:50%;left:48%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;object-fit:cover">
+            </div>
+            <div>
+              <p style="font-size:11px;font-weight:500;color:#0F0D0C;margin:0 0 4px;line-height:1.4">I build AI systems that work in the real world.</p>
+              <p style="font-size:10px;color:#9A9890;line-height:1.5;margin:0 0 10px">GenAI Engineer · <span class="exp-years">4</span>+ years · 4 industries · 15+ projects</p>
+              <div style="display:flex;justify-content:center;gap:12px">
+                <div style="text-align:center"><p style="font-size:13px;font-weight:500;color:#E85D0C;margin:0"><span class="exp-years">4</span>+</p><p style="font-size:8px;color:#C0BEB8;margin:0">Years</p></div>
+                <div style="text-align:center"><p style="font-size:13px;font-weight:500;color:#0F0D0C;margin:0">4</p><p style="font-size:8px;color:#C0BEB8;margin:0">Industries</p></div>
+                <div style="text-align:center"><p style="font-size:13px;font-weight:500;color:#0F0D0C;margin:0">15+</p><p style="font-size:8px;color:#C0BEB8;margin:0">Projects</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone frame: Writing -->
+        <div style="width:200px">
+          <p style="font-size:10px;color:#B0AEA8;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">Writing — 1 col</p>
+          <div style="background:#fff;border:1px solid #ECEAE6;border-radius:10px;overflow:hidden;padding:12px;display:flex;flex-direction:column;gap:8px">
+            <div style="border:1px solid #ECEAE6;border-radius:6px;padding:12px;border-top:3px solid #0F0D0C">
+              <p style="font-size:9px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;font-weight:500">LinkedIn · AI</p>
+              <p style="font-size:11px;color:#0F0D0C;font-weight:500;margin:0 0 5px;line-height:1.3">Why most RAG pipelines fail in production</p>
+              <p style="font-size:10px;color:#9A9890;line-height:1.5;margin:0 0 6px">Most teams get retrieval wrong before the LLM...</p>
+              <span style="font-size:10px;color:#0F0D0C">Read on LinkedIn →</span>
+            </div>
+            <div style="border:1px solid #ECEAE6;border-radius:6px;padding:12px;border-top:3px solid #0F0D0C">
+              <p style="font-size:9px;color:#C0BEB8;text-transform:uppercase;letter-spacing:1px;margin:0 0 4px;font-weight:500">LinkedIn · Agents</p>
+              <p style="font-size:11px;color:#0F0D0C;font-weight:500;margin:0 0 6px;line-height:1.3">Building multi-agent systems that don't collapse</p>
+              <span style="font-size:10px;color:#0F0D0C">Read on LinkedIn →</span>
+            </div>
+            <div style="background:#F7F6F4;border-radius:6px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:10px;color:#0F0D0C;font-weight:500">View all on LinkedIn ↗</span>
+              <span style="font-size:9px;color:#C0BEB8">Medium soon</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone frame: Contact -->
+        <div style="width:200px">
+          <p style="font-size:10px;color:#B0AEA8;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">Contact</p>
+          <div style="background:#fff;border:1px solid #ECEAE6;border-radius:10px;overflow:hidden;padding:28px 16px">
+            <p style="font-size:9px;color:#C0BEB8;text-transform:uppercase;letter-spacing:2px;font-weight:500;margin:0 0 12px">Contact</p>
+            <h2 style="font-size:22px;font-weight:500;color:#0F0D0C;letter-spacing:-0.8px;line-height:1.2;margin:0 0 10px">Let's build something that actually <span style="color:#E85D0C">ships.</span></h2>
+            <p style="font-size:11px;color:#9A9890;line-height:1.6;margin:0 0 18px">Open to consulting, full-time roles, and interesting AI problems.</p>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:11px;color:#fff;background:#E85D0C;padding:9px 16px;border-radius:20px;font-weight:500;text-align:center">Get in touch ↗</span>
+              <span style="font-size:11px;color:#0F0D0C;border:1px solid #ECEAE6;padding:9px 16px;border-radius:20px;text-align:center">View LinkedIn ↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phone frame: Footer -->
+        <div style="width:200px">
+          <p style="font-size:10px;color:#B0AEA8;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">Footer — stacked</p>
+          <div style="background:#0F0D0C;border-radius:10px;overflow:hidden;padding:20px 16px;border-top:2px solid #E85D0C">
+            <p style="font-size:18px;color:#fff;font-weight:500;letter-spacing:-0.5px;margin:0 0 3px">Amit Kumar</p>
+            <p style="font-size:10px;color:#5A5856;margin:0 0 14px">GenAI Engineer · Agentic AI</p>
+            <span style="font-size:11px;color:#fff;background:#E85D0C;padding:6px 14px;border-radius:20px;font-weight:500;display:inline-block;margin-bottom:18px">Get in touch ↗</span>
+            <div style="display:flex;gap:24px;margin-bottom:16px">
+              <div>
+                <p style="font-size:9px;color:#3A3836;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">Work</p>
+                <p style="font-size:11px;color:#5A5856;margin:0 0 4px">QA Automation</p>
+                <p style="font-size:11px;color:#5A5856;margin:0 0 4px">Fracture Analysis</p>
+                <p style="font-size:11px;color:#5A5856;margin:0">3D GenAI</p>
+              </div>
+              <div>
+                <p style="font-size:9px;color:#3A3836;text-transform:uppercase;letter-spacing:1.2px;margin:0 0 8px;font-weight:500">Connect</p>
+                <p style="font-size:11px;color:#5A5856;margin:0 0 4px">LinkedIn ↗</p>
+                <p style="font-size:11px;color:#5A5856;margin:0 0 4px">GitHub ↗</p>
+                <p style="font-size:11px;color:#5A5856;margin:0">Email ↗</p>
+              </div>
+            </div>
+            <div style="border-top:1px solid #2A2826;padding-top:12px">
+              <span style="font-size:10px;color:#3A3836">© 2026 Amit Kumar</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="spec-row">
+      <div class="spec-box">
+        <h4>Mobile breakpoint rules — @media (max-width: 768px)</h4>
+        <table>
+          <tr><td>Section padding</td><td><code>64px 40px → 40px 20px</code></td></tr>
+          <tr><td>Header</td><td>Nav links hidden · hamburger ☰ + CTA pill remain</td></tr>
+          <tr><td>Hero headline</td><td><code>~40px → 28px</code></td></tr>
+          <tr><td>Cards grid</td><td><code>3-col → 1-col</code></td></tr>
+          <tr><td>Writing grid</td><td><code>2+3 col → 1-col stacked</code></td></tr>
+          <tr><td>Skills rows</td><td>Label moves above tags · left bar hidden · no width constraint</td></tr>
+          <tr><td>Recommendations</td><td><code>3-col → 1-col</code> · hairline dividers between quotes</td></tr>
+          <tr><td>About</td><td>Photo top · text below · centered</td></tr>
+          <tr><td>Contact headline</td><td><code>36px → 28px</code></td></tr>
+          <tr><td>Footer</td><td>Split layout → stacked · Work + Connect columns inline</td></tr>
+        </table>
+      </div>
+      <div class="spec-box">
+        <h4>Orange interaction — mobile vs desktop</h4>
+        <table>
+          <tr><td>Desktop trigger</td><td><code>:hover</code> — mouse enters element</td></tr>
+          <tr><td>Mobile trigger</td><td><code>:active</code> — finger tap only</td></tr>
+          <tr><td>Mobile resting state</td><td>Same as desktop default — neutral, no orange</td></tr>
+          <tr><td>What turns orange on tap</td><td>Cards (border-top + label + CTA) · Writing cards · Skills rows · Footer links</td></tr>
+          <tr><td>Always orange (both)</td><td>Recommendations hook line · Contact "ships." · Hero accent · CTA buttons · Timeline current dot</td></tr>
+          <tr><td>Never permanently orange</td><td>Cards · Skills bars · Footer links (these are interaction-only)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ── AUTO-EXPERIENCE COUNTER ─────────────────────────────────────────────
+   Career start: November 2021. Recalculates on every page load.
+   .exp-years → numeric (4, 5, 6 …)
+   .exp-word  → capitalised word form (Four, Five, Six …)
+   ──────────────────────────────────────────────────────────────────────── */
+(function () {
+  var start   = new Date(2021, 10, 15); // Nov 15, 2021 (month is 0-indexed)
+  var exact   = (Date.now() - start) / (1000 * 60 * 60 * 24 * 365.25);
+  var half    = Math.round(exact * 2) / 2;          // nearest 0.5
+  var numStr  = half % 1 === 0 ? String(half) : half.toFixed(1); // "4" or "4.5"
+
+  var words   = ['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten'];
+  var floor   = Math.floor(half);
+  var wordStr = (words[floor] || floor) + (half % 1 !== 0 ? ' and a half' : '');
+
+  document.querySelectorAll('.exp-years').forEach(function (el) {
+    el.textContent = numStr;
+  });
+
+  var wordEl = document.querySelector('.exp-word');
+  if (wordEl) wordEl.textContent = wordStr;
+})();
+</script>
+</body>
+</html>
