@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D GenAI Design Tool - Amit Kumar</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #FFFFFF; color: #0F0D0C; line-height: 1.6; }
+  .wrap { max-width: 800px; margin: 0 auto; padding: 60px 40px; }
+  .back-link { display: inline-block; margin-bottom: 40px; font-size: 14px; color: #E85D0C; text-decoration: none; font-weight: 500; }
+  .back-link:hover { text-decoration: underline; }
+  .cs-tag { display: inline-block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; color: #E85D0C; background: #FFF3EE; border: 1px solid #FDDCCC; border-radius: 20px; padding: 4px 12px; margin-bottom: 16px; }
+  .cs-title { font-size: 36px; font-weight: 600; line-height: 1.2; margin-bottom: 24px; letter-spacing: -0.5px; }
+  .cs-metrics { display: flex; gap: 32px; padding: 24px 0; border-top: 1px solid #ECEAE6; border-bottom: 1px solid #ECEAE6; margin-bottom: 32px; flex-wrap: wrap; }
+  .cs-metric .val { font-size: 24px; font-weight: 600; color: #E85D0C; line-height: 1.1; }
+  .cs-metric .lbl { font-size: 11px; color: #5A5856; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+  .cs-section { margin-bottom: 40px; }
+  .cs-section h2 { font-size: 20px; font-weight: 600; margin-bottom: 16px; border-left: 3px solid #E85D0C; padding-left: 12px; line-height: 1.2; }
+  .cs-section p { font-size: 16px; color: #1C1A19; line-height: 1.7; margin-bottom: 16px; }
+  .cs-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .cs-stack span { font-size: 12px; background: #F7F6F4; color: #3D3C3A; padding: 4px 10px; border-radius: 4px; }
+  @media (max-width: 600px) {
+    .cs-title { font-size: 28px; }
+    .cs-metrics { gap: 20px; flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="../index.html#work" class="back-link">← Back to Portfolio</a>
+  <span class="cs-tag">Project</span>
+  <h1 class="cs-title">3D GenAI Design Tool</h1>
+  
+  <div class="cs-stack">
+    <span>LLM fine-tuning</span><span>CadQuery</span><span>Blender</span><span>Python</span><span>Generative AI</span>
+  </div>
+
+  <div class="cs-metrics">
+    <div class="cs-metric"><div class="val">NL → 3D</div><div class="lbl">Generation</div></div>
+    <div class="cs-metric"><div class="val">POC</div><div class="lbl">Status</div></div>
+    <div class="cs-metric"><div class="val">Seconds</div><div class="lbl">per prototype</div></div>
+  </div>
+
+  <div class="cs-section">
+    <h2>The Problem</h2>
+    <p>Prototyping automotive components like side glasses and steering side handles required manual scripting and slow iterations in CAD software. The design team needed a way to translate conceptual ideas directly into 3D models to speed up early-stage prototyping.</p>
+  </div>
+  
+  <div class="cs-section">
+    <h2>What I Built</h2>
+    <p>Built a Proof of Concept (POC) for a Fortune 500 automotive client. I fine-tuned Large Language Models (LLMs) to understand natural language design instructions and translate them directly into executable CadQuery scripts.</p>
+    <p>The system bridges the gap between text prompts and complex 3D geometries, allowing the generation of workable 3D CAD files that can be further refined in tools like Blender.</p>
+  </div>
+
+  <div class="cs-section">
+    <h2>The Outcome</h2>
+    <p>Demonstrated the ability to generate 3D models of car parts directly from text prompts, validating the potential to drastically reduce early-stage prototyping time and empowering designers to iterate at the speed of thought.</p>
+  </div>
+</div>
+</body>
+</html>

@@ -159,7 +159,7 @@ section { padding: 0 0 48px; }
   font-size: 15px; color: #1C1A19;
   max-width: 460px; line-height: 1.75; margin: 0 0 32px;
 }
-.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-start; padding-left: 48px; margin-top: 16px; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-start; padding-left: 0; margin-top: 16px; }
 .hero-cta-link { font-size: 16px; color: #E85D0C; font-weight: 500; text-decoration: none; transition: color 0.15s ease; }
 .hero-cta-link:hover { color: #D05008; }
 
@@ -646,7 +646,7 @@ footer { background: #0F0D0C; border-top: 2px solid #E85D0C; padding: 36px 0 20p
       <a href="#writing">Thoughts</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a href="https://drive.google.com/file/d/1SJaqTqO8UH4s3dztpoC3pw_cQepL5EUR/view" target="_blank" class="btn-hdr">View Resume ↗</a>
+    <a href="https://drive.google.com/file/d/1SJaqTqO8UH4s3dztpoC3pw_cQepL5EUR/view" target="_blank" class="btn-hdr" style="background:#E85D0C;color:#fff;border-color:#E85D0C;">View Resume ↗</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
   </div>
   <nav class="mob-menu" id="mob-menu">
@@ -673,7 +673,7 @@ footer { background: #0F0D0C; border-top: 2px solid #E85D0C; padding: 36px 0 20p
         <h1 class="hero-h1 last"><span class="oj">ships.</span></h1>
         <p class="hero-body">I'm Amit — a Data Scientist who takes multi-agent systems, RAG pipelines, and computer vision systems from idea to production. Not demos. Actual products used by real teams.</p>
         <div class="hero-ctas">
-          <a href="#contact" class="hero-cta-link">Let's build something →</a>
+          <a href="#contact" class="btn-hdr" style="margin-left:0;display:inline-flex;background:#E85D0C;color:#fff;border-color:#E85D0C;padding: 10px 20px; font-size: 14px;">Let's build something →</a>
         </div>
       </div>
       <div class="hero-chips">
@@ -777,7 +777,8 @@ footer { background: #0F0D0C; border-top: 2px solid #E85D0C; padding: 36px 0 20p
     </div>
     <div class="cards-grid">
 
-      <a class="proj-card" data-case="qa" style="cursor:pointer;">
+      <!-- Visible Projects (Top 4) -->
+      <a class="proj-card" href="work/qa-automation.html">
         <p class="card-label">Case study</p>
         <p class="card-title">QA Automation Platform</p>
         <p class="card-metric">10× faster · &lt;4 min to first test · 99% coverage</p>
@@ -786,25 +787,117 @@ footer { background: #0F0D0C; border-top: 2px solid #E85D0C; padding: 36px 0 20p
         <span class="card-cta">Read case study →</span>
       </a>
 
-      <a class="proj-card proj-card--disabled">
+      <a class="proj-card" href="work/fracture-analysis.html">
         <p class="card-label">Case study</p>
         <p class="card-title">Fracture Analysis AI</p>
         <p class="card-metric">2 days → 10 min · &gt;95% accuracy · 15+ polymer types</p>
         <p class="card-desc">On-premise CV system replacing manual lab analysis — deployed at automotive manufacturing client.</p>
         <p class="card-stack">PyTorch · TensorFlow · OpenCV · Python</p>
-        <span class="card-cta card-cta--soon">Case study coming soon</span>
+        <span class="card-cta">Read case study →</span>
       </a>
 
-      <a class="proj-card proj-card--disabled">
+      <a class="proj-card" href="work/on-premise-llm.html">
+        <p class="card-label">Project</p>
+        <p class="card-title">On-Premise Agentic LLM Platform</p>
+        <p class="card-metric">Cloud-independent · Open-source LLMs</p>
+        <p class="card-desc">Designed an on-premise, agentic LLM platform supporting autonomous reasoning and tool-driven execution without external APIs.</p>
+        <p class="card-stack">Agentic AI · LLM Orchestration · Vector DBs</p>
+        <span class="card-cta">Read project details →</span>
+      </a>
+
+      <a class="proj-card" href="work/side-airbags.html">
+        <p class="card-label">Project</p>
+        <p class="card-title">Side Airbags Detection</p>
+        <p class="card-metric">97%+ accuracy · Automated Quality Inspection</p>
+        <p class="card-desc">Replaced manual video-based quality inspection with an automated AI solution for automotive safety validation.</p>
+        <p class="card-stack">AWS SageMaker · Computer Vision · UNet</p>
+        <span class="card-cta">Read project details →</span>
+      </a>
+
+      <a class="proj-card" href="work/3d-genai.html">
         <p class="card-label">Project</p>
         <p class="card-title">3D GenAI Design Tool</p>
-        <p class="card-metric">NL → 3D CAD · internal tool in active use</p>
-        <p class="card-desc">Natural language to CadQuery / Blender script — working 3D file in seconds, used daily by design team.</p>
-        <p class="card-stack">LLM fine-tuning · CadQuery · Blender · Python</p>
-        <span class="card-cta card-cta--soon">Coming soon</span>
+        <p class="card-metric">NL → 3D CAD · successful POC</p>
+        <p class="card-desc">Natural language to CadQuery / Blender script — generating 3D models of car parts directly from text prompts.</p>
+        <p class="card-stack">LLM fine-tuning · CadQuery · Blender</p>
+        <span class="card-cta">Read project details →</span>
+      </a>
+
+      <!-- 6th slot: Show More Button -->
+      <div id="show-more-wrapper" style="display:flex; justify-content:center; align-items:center;">
+        <button id="show-more-card" class="btn-primary" style="font-size: 16px; font-weight: 600; padding: 16px 40px; border: none; cursor: pointer; border-radius: 30px; box-shadow: 0 4px 14px rgba(232,93,12,0.3);">
+          Show more work ↓
+        </button>
+      </div>
+
+      <!-- Hidden Projects -->
+      <a class="proj-card proj-hidden" href="work/restaurant-pipelines.html" style="display:none;">
+        <p class="card-label">Project</p>
+        <p class="card-title">Restaurant &amp; Meal Matching Data Pipelines</p>
+        <p class="card-metric">Trillions of combinations · &lt;40 min processing</p>
+        <p class="card-desc">Scalable ETL pipeline unifying multi-country restaurant data across aggregator platforms.</p>
+        <p class="card-stack">Databricks · PySpark · AWS · ETL</p>
+        <span class="card-cta">Read project details →</span>
+      </a>
+
+      <a class="proj-card proj-hidden" href="work/part-failure-analytics.html" style="display:none;">
+        <p class="card-label">Project</p>
+        <p class="card-title">Part Failure Microscopic Analytics</p>
+        <p class="card-metric">90%+ accuracy · 2-stage AI pipeline</p>
+        <p class="card-desc">Automated microscopic fracture analysis using DeiT classification and UNet segmentation models.</p>
+        <p class="card-stack">Computer Vision · AWS SageMaker · Deep Learning</p>
+        <span class="card-cta">Read project details →</span>
+      </a>
+
+      <a class="proj-card proj-hidden" href="work/object-detection.html" style="display:none;">
+        <p class="card-label">Project</p>
+        <p class="card-title">AI Object Detection Platform</p>
+        <p class="card-metric">18 object categories · 90% accuracy</p>
+        <p class="card-desc">Automated large-scale highway infrastructure monitoring to identify road signs and toll plazas.</p>
+        <p class="card-stack">Object Detection · Deep Learning · Python</p>
+        <span class="card-cta">Read project details →</span>
+      </a>
+
+      <a class="proj-card proj-hidden" href="work/recommendation-engine.html" style="display:none;">
+        <p class="card-label">Project</p>
+        <p class="card-title">Recommendation Pipeline Engine</p>
+        <p class="card-metric">End-to-end ETL · LightFM</p>
+        <p class="card-desc">Data engineering pipelines and deployed LightFM-based recommendation model supporting collaborative filtering.</p>
+        <p class="card-stack">Apache Airflow · MySQL · LightFM</p>
+        <span class="card-cta">Read project details →</span>
+      </a>
+
+      <a class="proj-card proj-hidden" href="work/nokia-vi.html" style="display:none;">
+        <p class="card-label">Project</p>
+        <p class="card-title">Nokia VI Data Platform</p>
+        <p class="card-metric">Scalable ETL architecture</p>
+        <p class="card-desc">Data validation and ingestion pipeline integrating Excel and DFS data sources for transport analytics.</p>
+        <p class="card-stack">ETL · Data Engineering · Airflow</p>
+        <span class="card-cta">Read project details →</span>
+      </a>
+
+      <a class="proj-card proj-hidden" href="work/twilio-extraction.html" style="display:none;">
+        <p class="card-label">Project</p>
+        <p class="card-title">Twilio Customer Data Extraction</p>
+        <p class="card-metric">220,000+ records processed</p>
+        <p class="card-desc">API-driven data extraction pipelines to process, transform, and share large customer interaction datasets.</p>
+        <p class="card-stack">APIs · Python · Pandas</p>
+        <span class="card-cta">Read project details →</span>
       </a>
 
     </div>
+    <script>
+      var showMoreCard = document.getElementById('show-more-card');
+      var showMoreWrapper = document.getElementById('show-more-wrapper');
+      if (showMoreCard) {
+        showMoreCard.addEventListener('click', function() {
+          document.querySelectorAll('.proj-hidden').forEach(function(el) {
+            el.style.display = 'flex';
+          });
+          if (showMoreWrapper) showMoreWrapper.style.display = 'none';
+        });
+      }
+    </script>
   </div>
 </section>
 
@@ -881,6 +974,17 @@ footer { background: #0F0D0C; border-top: 2px solid #E85D0C; padding: 36px 0 20p
           <span class="tl-date">2018 — 2022</span>
         </div>
         <p class="tl-co edu">Meerut Institute of Engineering and Technology</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot edu"></div>
+        <div class="tl-head">
+          <p class="tl-role">Certifications</p>
+        </div>
+        <ul class="tl-pts" style="margin-top: 12px; list-style-type: none; padding-left: 0;">
+          <li style="margin-bottom: 8px;"><b>Anthropic:</b> Introduction to Model Context Protocol, Claude Code in Action, Building with the Claude API, Introduction to agent skills</li>
+          <li><b>Microsoft:</b> Azure Data Fundamentals (DP-900), Azure AI Fundamentals (AI-900)</li>
+        </ul>
       </div>
 
     </div>
@@ -1274,69 +1378,7 @@ footer { background: #0F0D0C; border-top: 2px solid #E85D0C; padding: 36px 0 20p
 })();
 </script>
 
-<!-- ══════════════════════════════════════
-     CASE STUDY MODAL
-══════════════════════════════════════ -->
-<div class="cs-overlay" id="cs-overlay">
-  <div class="cs-modal" id="cs-modal">
-  <button class="cs-close-btn cs-close-top" id="cs-close">✕</button>
-    <div class="cs-side">
-      <span class="cs-tag" id="cs-tag">Case study</span>
-      <p class="cs-title" id="cs-title">QA Automation Platform</p>
-      <div class="cs-metrics" id="cs-metrics">
-        <div class="cs-metric"><div class="val">10×</div><div class="lbl">faster testing</div></div>
-        <div class="cs-metric"><div class="val">&lt;4 min</div><div class="lbl">to first test</div></div>
-        <div class="cs-metric"><div class="val">99%</div><div class="lbl">coverage potential</div></div>
-      </div>
-      <div class="cs-stack-side" id="cs-stack">
-        <span class="cs-stack-tag">LangGraph</span>
-        <span class="cs-stack-tag">LangChain</span>
-        <span class="cs-stack-tag">FastAPI</span>
-        <span class="cs-stack-tag">FAISS</span>
-        <span class="cs-stack-tag">OpenAI</span>
-        <span class="cs-stack-tag">MySQL</span>
-        <span class="cs-stack-tag">Docker</span>
-        <span class="cs-stack-tag">Python</span>
-      </div>
-    </div>
-    <div class="cs-body">
-      <p class="cs-section-h">The problem</p>
-      <p class="cs-section-p" id="cs-problem">Writing test cases manually was slow, inconsistent, and bottlenecked every release cycle. Teams needed a way to go from a plain-language feature spec to working, executable tests — without human intervention at every step.</p>
-      <p class="cs-section-h">What I built</p>
-      <p class="cs-section-p" id="cs-built">An 8–11 agent LangGraph system where each agent owns a single responsibility: NLP-to-test-case conversion, test data generation, framework-aware code generation, and CI/CD integration. RAG pipelines using FAISS with OpenAI Embeddings and SentenceTransformers provide codebase-grounded context so generated tests are aware of the actual implementation — not just the spec.</p>
-      <p class="cs-section-h">The outcome</p>
-      <p class="cs-section-p" id="cs-outcome">Plain-language instruction to production-ready test in under 4 minutes. Testing cycles cut by 10×. Coverage potential above 99%. End-to-end lifecycle automated: natural language input → test case generation → execution → structured report output. Deployed and in active use.</p>
-    </div>
-  </div>
-</div>
 
-<script>
-(function () {
-  var overlay = document.getElementById('cs-overlay');
-  var closeBtn = document.getElementById('cs-close');
-
-  document.querySelectorAll('.proj-card[data-case]').forEach(function (card) {
-    card.addEventListener('click', function (e) {
-      e.preventDefault();
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  function closeModal() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  closeBtn.addEventListener('click', closeModal);
-  overlay.addEventListener('click', function (e) {
-    if (e.target === overlay) closeModal();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeModal();
-  });
-})();
-</script>
 
 </body>
 </html>
