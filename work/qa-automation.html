@@ -3,60 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QA Automation Platform - Amit Kumar</title>
+<title>QA Automation Platform Case Study - Amit Kumar</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: system-ui, -apple-system, sans-serif; background: #FFFFFF; color: #0F0D0C; line-height: 1.6; }
-  .wrap { max-width: 800px; margin: 0 auto; padding: 60px 40px; }
+  .wrap { max-width: 850px; margin: 0 auto; padding: 60px 40px; }
   .back-link { display: inline-block; margin-bottom: 40px; font-size: 14px; color: #E85D0C; text-decoration: none; font-weight: 500; }
   .back-link:hover { text-decoration: underline; }
   .cs-tag { display: inline-block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; color: #E85D0C; background: #FFF3EE; border: 1px solid #FDDCCC; border-radius: 20px; padding: 4px 12px; margin-bottom: 16px; }
-  .cs-title { font-size: 36px; font-weight: 600; line-height: 1.2; margin-bottom: 24px; letter-spacing: -0.5px; }
+  .cs-title { font-size: 36px; font-weight: 600; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .cs-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .cs-stack span { font-size: 12px; background: #F7F6F4; color: #3D3C3A; padding: 4px 10px; border-radius: 4px; }
   .cs-metrics { display: flex; gap: 32px; padding: 24px 0; border-top: 1px solid #ECEAE6; border-bottom: 1px solid #ECEAE6; margin-bottom: 32px; flex-wrap: wrap; }
   .cs-metric .val { font-size: 24px; font-weight: 600; color: #E85D0C; line-height: 1.1; }
   .cs-metric .lbl { font-size: 11px; color: #5A5856; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
-  .cs-section { margin-bottom: 40px; }
-  .cs-section h2 { font-size: 20px; font-weight: 600; margin-bottom: 16px; border-left: 3px solid #E85D0C; padding-left: 12px; line-height: 1.2; }
+  
+  .cs-section { margin-bottom: 48px; }
+  .cs-section h2 { font-size: 22px; font-weight: 600; margin-bottom: 18px; border-left: 3px solid #E85D0C; padding-left: 12px; line-height: 1.2; }
   .cs-section p { font-size: 16px; color: #1C1A19; line-height: 1.7; margin-bottom: 16px; }
-  .cs-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
-  .cs-stack span { font-size: 12px; background: #F7F6F4; color: #3D3C3A; padding: 4px 10px; border-radius: 4px; }
+  .cs-section ul { margin: 12px 0 24px 20px; color: #1C1A19; }
+  .cs-section li { margin-bottom: 8px; font-size: 16px; line-height: 1.6; }
+  
+  /* Tables */
+  .cs-table-wrapper { overflow-x: auto; margin: 24px 0; border: 1px solid #ECEAE6; border-radius: 8px; }
+  .cs-table { width: 100%; border-collapse: collapse; font-size: 14px; text-align: left; background: #FFFFFF; }
+  .cs-table th { padding: 12px 16px; background: #FAFAF8; border-bottom: 2px solid #ECEAE6; color: #0F0D0C; font-weight: 600; }
+  .cs-table td { padding: 12px 16px; border-bottom: 1px solid #ECEAE6; color: #3D3C3A; vertical-align: top; line-height: 1.5; }
+  .cs-table tr:last-child td { border-bottom: none; }
+  
+  /* Diagrams */
+  .mermaid-container { margin: 32px 0; background: #FAFAF8; border: 1px solid #ECEAE6; border-radius: 8px; padding: 24px; overflow-x: auto; }
+  .mermaid-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #5A5856; margin-bottom: 16px; text-align: center; }
+
   @media (max-width: 600px) {
+    .wrap { padding: 40px 20px; }
     .cs-title { font-size: 28px; }
     .cs-metrics { gap: 20px; flex-direction: column; }
   }
 </style>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+</script>
 </head>
 <body>
 <div class="wrap">
   <a href="../index.html#work" class="back-link">← Back to Portfolio</a>
   <span class="cs-tag">Case Study</span>
-  <h1 class="cs-title">QA Automation Platform</h1>
+  <h1 class="cs-title">Autonomous QA Automation Platform</h1>
   
+  <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:12px; font-size:12px; color:#5A5856;">
+    <span>Timeline: July 2025 – Present</span>
+    <span>Scope: Multi-Agent LLM Orchestration</span>
+  </div>
+
   <div class="cs-stack">
-    <span>LangGraph</span><span>LangChain</span><span>Playwright</span><span>Pytest</span><span>FastAPI</span><span>MySQL</span><span>FAISS</span><span>OpenAI</span>
+    <span>LangGraph</span><span>LangChain</span><span>Playwright</span><span>Pytest</span><span>FastAPI</span><span>MySQL</span><span>FAISS</span><span>OpenAI Embeddings</span><span>Google Gemini</span><span>Groq</span>
   </div>
 
   <div class="cs-metrics">
-    <div class="cs-metric"><div class="val">10×</div><div class="lbl">faster testing</div></div>
-    <div class="cs-metric"><div class="val">&lt;4 min</div><div class="lbl">to first test</div></div>
-    <div class="cs-metric"><div class="val">99%</div><div class="lbl">coverage</div></div>
+    <div class="cs-metric"><div class="val">10×</div><div class="lbl">Faster Testing Lifecycle</div></div>
+    <div class="cs-metric"><div class="val">&lt;4 Min</div><div class="lbl">To Fully Scripted Test</div></div>
+    <div class="cs-metric"><div class="val">99%</div><div class="lbl">Potential Code Coverage</div></div>
   </div>
 
+  <!-- Section 1 -->
   <div class="cs-section">
-    <h2>The Problem</h2>
-    <p>Writing and maintaining end-to-end tests manually was a massive bottleneck in the release cycle. The team needed an autonomous system to convert plain-language feature requirements into working, executable functional tests without constant human intervention.</p>
-  </div>
-  
-  <div class="cs-section">
-    <h2>What I Built</h2>
-    <p>Architected an 8–11 agent LangGraph system where specialized subagents handle NLP-to-test conversion, test data generation, framework-aware code generation, and CI/CD integration.</p>
-    <p>Integrated Playwright for autonomous browser actions and Pytest as the underlying framework to execute the generated code. RAG pipelines using FAISS, OpenAI Embeddings, and SentenceTransformers provide codebase-grounded context so generated tests are aware of the actual implementation details.</p>
+    <h2>The Challenge &amp; Traditional Bottlenecks</h2>
+    <p>In modern software engineering, test automation remains highly manual and fragmented. Non-technical stakeholders (Product Managers, Designers, and Business Analysts) are completely dependent on QA engineers to translate feature concepts into test coverage.</p>
+    <p>The traditional workflow is slow and error-prone:</p>
+    <ul>
+      <li>Stakeholders explain feature specifications to QA engineers.</li>
+      <li>QA engineers manually document positive, negative, and boundary test scenarios.</li>
+      <li>Automation engineers manually script end-to-end tests (often fighting dynamic DOM selectors).</li>
+      <li>Engineers configure runners, compile reports, and present findings to the product team.</li>
+    </ul>
+    <p>This feedback cycle takes days to weeks, slowing down release schedules. In addition, minor frontend UI updates break hardcoded test selectors, leading to high maintenance overhead. The goal was to build a system that automates the automation—enabling anyone to describe a feature in plain English and instantly receive self-healing, executable browser test runs.</p>
   </div>
 
+  <!-- Section 2 -->
   <div class="cs-section">
-    <h2>The Outcome</h2>
-    <p>The time-to-first-test dropped from days to under 4 minutes. End-to-end test lifecycles (natural language → code generation → execution → reporting) are fully automated, achieving a potential 99% test coverage and speeding up the testing workflow by 10×.</p>
+    <h2>The Solution: Autonomous Multi-Agent QA</h2>
+    <p>We designed and implemented a production-ready QA Platform powered by cooperative LLM agents. Non-technical users simply provide a plain English description of a task (e.g., <i>"Verify that a user can add a product to the cart, go to checkout, fill in sample billing details, and complete the order"</i>). The platform dynamically handles the rest:</p>
+    <ul>
+      <li><strong>Guided Discovery:</strong> Clarifies ambiguous feature parameters interactively with the user.</li>
+      <li><strong>Scenario Design:</strong> Auto-generates structured positive and negative test cases.</li>
+      <li><strong>Human-in-the-Loop Checkpoints:</strong> Pauses for user approval and editing before planning code.</li>
+      <li><strong>Dynamic Scripting:</strong> Compiles instructions into optimized Playwright browser test code.</li>
+      <li><strong>Sandbox Execution &amp; Healing:</strong> Executes runs in secure, containerized environments, auto-repairing selector issues on the fly if test execution trips over a UI change.</li>
+      <li><strong>One-Click CI/CD:</strong> Packages approved test suites directly into active pipelines.</li>
+    </ul>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="cs-section">
+    <h2>System Architecture &amp; Collaborative Logic</h2>
+    <p>The platform is modeled as a stateful agentic graph using <strong>LangGraph</strong> to coordinate specialized workers. It implements a <strong>Hub-and-Spoke (Supervisor) Architecture</strong>, positioning the central Orchestration Agent as the central gatekeeper. The Orchestrator interfaces directly with the user for all inputs, clarification prompts, and approval states, delegating specialized technical duties to individual spokes.</p>
+    
+    <div class="mermaid-container">
+      <div class="mermaid-title">Hub-and-Spoke Agent Coordination</div>
+      <pre class="mermaid">
+graph TD
+    User([User / Stakeholder])
+    Orchestrator{Orchestration Agent<br/>Central Supervisor Hub}
+    
+    Gen[Scenario Designer]
+    Planner[Action Planner]
+    CodeGen[Code Synthesizer]
+    Exec[Automation Runner]
+    Healer[Self-Healing Debugger]
+    
+    User <-->|1. Input / 4. HITL Approvals / 6. Clarifications| Orchestrator
+    
+    Orchestrator <-->|2. Generate Scenarios| Gen
+    Orchestrator <-->|3. Generate Automation Plan| Planner
+    Orchestrator <-->|5. Dynamic Clarification Requests| CodeGen
+    
+    CodeGen -->|7. Execute Scripts| Exec
+    Exec -->|8. Failure Logs| Healer
+    Healer -->|9. Surgically Healed Code| CodeGen
+    Exec -->|10. Final Reports| Orchestrator
+      </pre>
+    </div>
+
+    <div class="cs-table-wrapper">
+      <table class="cs-table">
+        <thead>
+          <tr>
+            <th>Graph Node</th>
+            <th>Core Responsibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Orchestration Agent (Hub)</strong></td>
+            <td>Serves as the main supervisor. Conducts initial drill-downs, resolves ambiguities with the user, handles HITL checkpoints, and coordinates workflow routing.</td>
+          </tr>
+          <tr>
+            <td><strong>Scenario Designer</strong></td>
+            <td>Translates specifications into structured lists of comprehensive test scenarios (both positive and negative paths).</td>
+          </tr>
+          <tr>
+            <td><strong>Scenario Review (HITL)</strong></td>
+            <td>An execution pause checkpoint allowing the user to review, edit, and approve test cases before proceeding.</td>
+          </tr>
+          <tr>
+            <td><strong>Page Inspector</strong></td>
+            <td>Launches an MCP tool to scan target web application DOM layouts, extracting selectors and page structures for context-grounding.</td>
+          </tr>
+          <tr>
+            <td><strong>Action Planner</strong></td>
+            <td>Decomposes approved test cases into granular, logical browser execution steps.</td>
+          </tr>
+          <tr>
+            <td><strong>Plan Review (HITL)</strong></td>
+            <td>Allows users to inspect and refine step-by-step browser interactions before automation scripts are written.</td>
+          </tr>
+          <tr>
+            <td><strong>Interactive Clarifier</strong></td>
+            <td>Prompts the user in real-time for missing technical parameters (e.g., temporary credentials, specific IDs).</td>
+          </tr>
+          <tr>
+            <td><strong>Code Synthesizer &amp; Validator</strong></td>
+            <td>An agentic coding loop: writes Playwright code, reflects on code quality/style guidelines, and optimizes scripts prior to run.</td>
+          </tr>
+          <tr>
+            <td><strong>Sandbox Provisioner</strong></td>
+            <td>Dynamically constructs isolated sandbox instances using modern environment managers to ensure dependency and environment safety.</td>
+          </tr>
+          <tr>
+            <td><strong>Automation Runner</strong></td>
+            <td>Executes Playwright scripts inside clean browser instances, tracking live progress and capturing logs, screenshots, and videos.</td>
+          </tr>
+          <tr>
+            <td><strong>Self-Healing Debugger</strong></td>
+            <td>An iterative loop that intercepts execution errors, reads logs and current DOM states, corrects broken locators, and resumes execution.</td>
+          </tr>
+          <tr>
+            <td><strong>Resource Teardown</strong></td>
+            <td>Tears down temporary sandboxes and resets runtime memory flags, keeping the platform clean.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mermaid-container">
+      <div class="mermaid-title">System Workflow Sequence</div>
+      <pre class="mermaid">
+sequenceDiagram
+    autonumber
+    actor User as User (Stakeholder/Developer)
+    participant Orchestrator as Orchestration Agent (Central Hub / Supervisor)
+    participant Gen as Scenario Designer (Spoke)
+    participant Planner as Action Planner (Spoke)
+    participant CodeGen as Code Synthesizer (Spoke)
+    participant Exec as Runner / Debugger (Spokes)
+
+    User->>Orchestrator: 1. Input Feature Description (Plain English)
+    
+    Note over Orchestrator: Orchestrator analyzes requirements & routes tasks
+    
+    Orchestrator->>Gen: 2. Delegate Test Scenario Generation
+    Gen-->>Orchestrator: 3. Return Draft Scenarios (Positive/Negative)
+    
+    Orchestrator-->>User: 4. Present Scenarios for Review (HITL Checkpoint)
+    User-->>Orchestrator: 5. Approve Scenarios / Additions
+    
+    Orchestrator->>Planner: 6. Delegate Step Planning
+    Planner-->>Orchestrator: 7. Return Draft Execution Steps
+    
+    Orchestrator-->>User: 8. Present Execution Plan for Review (HITL Checkpoint)
+    User-->>Orchestrator: 9. Approve/Refine Plan
+    
+    opt Clarification Loop
+        Orchestrator-->>User: 10. Ask for missing credentials/IDs (HITL)
+        User-->>Orchestrator: 11. Provide clarification
+    end
+
+    Orchestrator->>CodeGen: 12. Delegate Code Generation
+    CodeGen->>Exec: 13. Run Tests & Trigger Healing Loop (Sequential chain)
+    Exec-->>Orchestrator: 14. Return Final Execution Report & Healed Code
+    
+    Orchestrator-->>User: 15. Present Playwright Test Report (Logs, Screenshots, Videos)
+      </pre>
+    </div>
+
+    <p><strong>Core Architectural Principles:</strong></p>
+    <ul>
+      <li><strong>State Persistence:</strong> The active state captures everything from API token counts to raw code snippets, allowing developers to pause, edit, and resume flows seamlessly.</li>
+      <li><strong>Reflection Loop:</strong> The Code Synthesizer acts like a senior developer review process—writing an initial version, identifying bugs or missing patterns, and automatically editing the code before running it.</li>
+      <li><strong>Resilient Recovery:</strong> The execution-healing cycle creates a closed-loop system. If the script fails, the self-healing debugger inspects visual and terminal logs, rewrites selectors, and retries automatically.</li>
+      <li><strong>LLM-Agnostic Setup:</strong> Dynamically loads Gemini, OpenAI, Groq, or Anthropic models depending on latency and budget needs.</li>
+    </ul>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="cs-section">
+    <h2>Deployment Strategy &amp; Enterprise Scope</h2>
+    <p>The platform runs as a secure web application. Tests are executed inside isolated sandboxes to protect host environments. Furthermore, verified test configurations can be integrated directly with enterprise CI/CD workflows (GitHub Actions, GitLab Pipelines, and Jenkins runners) through standard webhooks, allowing code changes to auto-run tests and report back on every commit.</p>
   </div>
 </div>
 </body>
