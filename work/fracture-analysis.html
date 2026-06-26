@@ -13,7 +13,8 @@
   .back-link:hover { text-decoration: underline; }
   .cs-tag { display: inline-block; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; color: #E85D0C; background: #FFF3EE; border: 1px solid #FDDCCC; border-radius: 20px; padding: 4px 12px; margin-bottom: 16px; }
   .cs-title { font-size: 36px; font-weight: 600; line-height: 1.2; margin-bottom: 24px; letter-spacing: -0.5px; }
-  .cs-metrics { display: flex; gap: 32px; padding: 24px 0; border-top: 1px solid #ECEAE6; border-bottom: 1px solid #ECEAE6; margin-bottom: 32px; flex-wrap: wrap; }
+    .cs-metrics { display: flex; gap: 32px; padding: 24px 0; border-top: 1px solid #ECEAE6; border-bottom: 1px solid #ECEAE6; margin-bottom: 32px; flex-wrap: wrap; justify-content: center; }
+  .cs-metric { flex: 1; min-width: 120px; text-align: center; }
   .cs-metric .val { font-size: 24px; font-weight: 600; color: #E85D0C; line-height: 1.1; }
   .cs-metric .lbl { font-size: 11px; color: #5A5856; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
   .cs-section { margin-bottom: 40px; }
@@ -25,9 +26,42 @@
     .cs-title { font-size: 28px; }
     .cs-metrics { gap: 20px; flex-direction: column; }
   }
+
+  /* 2-Column Grid Layout */
+  .container { display: grid; grid-template-columns: 240px 1fr; gap: 48px; max-width: 1200px; margin: 0 auto; padding: 60px 40px; }
+  
+  /* Sidebar Styles */
+  #project-sidebar { position: sticky; top: 60px; height: fit-content; }
+  .sidebar-wrapper { border-right: 1px solid #ECEAE6; padding-right: 24px; }
+  .sidebar-header h3 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #5A5856; margin: 12px 0 20px; }
+  .home-link { display: inline-block; font-size: 13px; color: #E85D0C; text-decoration: none; font-weight: 500; }
+  .home-link:hover { text-decoration: underline; }
+  
+  .sidebar-nav { display: flex; flex-direction: column; gap: 6px; }
+  .nav-item { font-size: 14px; color: #5A5856; text-decoration: none; padding: 8px 12px; border-radius: 6px; transition: all 0.15s ease; font-weight: 450; }
+  .nav-item:hover { background: #FAFAF8; color: #E85D0C; }
+  .nav-item.active { background: #FFF3EE; color: #E85D0C; font-weight: 600; }
+
+  /* Content Wrapper */
+  .wrap { max-width: 850px; padding: 0; margin: 0; }
+
+  /* Responsive styling */
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; gap: 24px; padding: 40px 20px; }
+    #project-sidebar { position: relative; top: 0; margin-bottom: 24px; }
+    .sidebar-wrapper { border-right: none; border-bottom: 1px solid #ECEAE6; padding-right: 0; padding-bottom: 20px; }
+    .sidebar-nav { flex-direction: row; overflow-x: auto; white-space: nowrap; padding-bottom: 8px; gap: 8px; }
+    .nav-item { display: inline-block; padding: 6px 12px; }
+    .cs-title { font-size: 28px; }
+    .cs-metrics { gap: 20px; flex-direction: column; }
+  }
+
 </style>
 </head>
 <body>
+<div class="container">
+  <!-- Dynamic Sidebar Container -->
+  <div id="project-sidebar"></div>
 <div class="wrap">
   <a href="../index.html#work" class="back-link">← Back to Portfolio</a>
   <span class="cs-tag">Case Study</span>
@@ -59,5 +93,8 @@
     <p>Manual inspection time was reduced from days to under 10 minutes per analysis, operating at >95% accuracy. The entire system was deployed successfully on the client's on-premise infrastructure to ensure data privacy and security.</p>
   </div>
 </div>
+</div>
+
+<script src="../js/project-sidebar.js"></script>
 </body>
 </html>
